@@ -225,6 +225,14 @@ fun Activity.setNavigationBarHidden(enabled: Boolean = true) {
 // FINISHING
 
 /**
+ * Finishes without a transition
+ */
+fun Activity.finishWithoutTransition() {
+    overridePendingTransition(0, 0)
+    finish()
+}
+
+/**
  * Finishes after transition
  */
 fun Activity.supportFinishAfterTransition() {
