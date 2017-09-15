@@ -77,6 +77,11 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
 
+/**
+ * Returns the intent for the component
+ */
+inline fun <reified T : Any> Context.IntentFor(): Intent = Intent(this, T::class.java)
+
 // ATTRS
 
 /**
@@ -579,6 +584,7 @@ fun Context.hasNavigationBar(): Boolean {
 /**
  * Returns whether the device is connected
  */
+@SuppressLint("MissingPermission")
 fun Context.isConnected(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false
@@ -587,6 +593,7 @@ fun Context.isConnected(): Boolean {
 /**
  * Returns whether connected to wifi
  */
+@SuppressLint("MissingPermission")
 fun Context.isConnectedWifi(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false && info?.type == ConnectivityManager.TYPE_WIFI
@@ -595,6 +602,7 @@ fun Context.isConnectedWifi(): Boolean {
 /**
  * Returns whether connected to mobile
  */
+@SuppressLint("MissingPermission")
 fun Context.isConnectedMobile(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false && info?.type == ConnectivityManager.TYPE_MOBILE
