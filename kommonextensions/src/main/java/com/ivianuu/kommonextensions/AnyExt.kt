@@ -82,3 +82,111 @@ val isNougatMr1 = currentSdk >= Build.VERSION_CODES.N_MR1
  * Whether is running on oreo or not
  */
 val isOreo = currentSdk >= Build.VERSION_CODES.O
+
+/**
+ * Invokes the function on ics mr1 and above
+ */
+inline fun onIceCreamSandwichMr1(func:() -> Unit) {
+    if (isIceCreamSandwichMr1) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on jelly bean and above
+ */
+inline fun onJellyBean(func:() -> Unit) {
+    if (isJellyBean) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on jelly bean mr1 and above
+ */
+inline fun onJellyBeanMr1(func:() -> Unit) {
+    if (isJellyBeanMr1) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on jelly bean mr2 and above
+ */
+inline fun onJellyBeanMr2(func:() -> Unit) {
+    if (isJellyBeanMr2) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on kit kat and above
+ */
+inline fun onKitKat(func:() -> Unit) {
+    if (isKitkat) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on kit kat watch and above
+ */
+inline fun onKitKatWatch(func:() -> Unit) {
+    if (isKitkatWatch) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on lollipop and above
+ */
+inline fun onLollipop(func:() -> Unit) {
+    if (isLollipop) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on lollipop mr1 and above
+ */
+inline fun onLollipopMr1(func:() -> Unit) {
+    if (isLollipopMr1) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on marshmallow and above
+ */
+inline fun onMarshmallow(func:() -> Unit) {
+    if (isMarshmallow) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on nougat and above
+ */
+inline fun onNougat(func:() -> Unit) {
+    if (isNougat) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on nougat mr1 and above
+ */
+inline fun onNougatMr1(func:() -> Unit) {
+    if (isNougatMr1) {
+        func.invoke()
+    }
+}
+
+/**
+ * Invokes the function on oreo and above
+ */
+inline fun onOreo(func:() -> Unit) {
+    if (isOreo) {
+        func.invoke()
+    }
+}
