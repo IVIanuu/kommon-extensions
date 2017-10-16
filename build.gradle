@@ -15,6 +15,8 @@ buildscript {
 
         supportVersion = '26.1.0'
         supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
+        supportDesign = "com.android.support:design:$supportVersion"
+        supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
     }
 
     repositories {

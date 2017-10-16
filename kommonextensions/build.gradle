@@ -33,6 +33,8 @@ android {
 dependencies {
     // Android Support
     implementation rootProject.ext.supportAppCompat
+    implementation rootProject.ext.supportDesign
+    implementation rootProject.ext.supportRecyclerView
 
     // Kotlin
     api rootProject.ext.kotlinStdlib
