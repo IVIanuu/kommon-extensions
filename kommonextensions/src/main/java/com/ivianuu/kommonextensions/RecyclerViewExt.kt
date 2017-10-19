@@ -19,6 +19,8 @@ package com.ivianuu.kommonextensions
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.RecyclerView
 
+// ADD FIND FIRST VISIBLE POSITION
+
 /**
  * Hides/Shows the fab when RecyclerView is scrolled
  * */
