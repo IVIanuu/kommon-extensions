@@ -19,4 +19,9 @@ package com.ivianuu.kommonextensions
 /**
  * Non thread safe lazy
  */
+fun <T> semiSafeLazy(initializer: () -> T) = lazy(LazyThreadSafetyMode.PUBLICATION, initializer)
+
+/**
+ * Non thread safe lazy
+ */
 fun <T> unsafeLazy(initializer: () -> T) = lazy(LazyThreadSafetyMode.NONE, initializer)
