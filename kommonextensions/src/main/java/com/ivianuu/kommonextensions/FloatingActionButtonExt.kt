@@ -33,7 +33,7 @@ fun FloatingActionButton.show(show: Boolean) {
  * Animates the fab in or out
  */
 inline fun FloatingActionButton.show(func: () -> Boolean) {
-    if (func.invoke()) {
+    if (func()) {
         show()
     } else{
         hide()

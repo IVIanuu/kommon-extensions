@@ -43,11 +43,16 @@ fun View.setGone() {
 }
 
 /**
- * Sets the view whether visible or gone
+ * Sets the view visible or gone
  */
 fun View.setVisible(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }
+
+/**
+ * Sets the view visible or gone
+ */
+fun View.setVisible(predicate: () -> Boolean) = setVisible(predicate())
 
 /**
  * Returns whether the view is visible
