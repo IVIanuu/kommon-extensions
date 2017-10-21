@@ -2,8 +2,8 @@ package com.ivianuu.kommonextensions.sample
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.ivianuu.kommonextensions.createBundle
-import com.ivianuu.kommonextensions.setTransparentSystemBars
+import android.widget.LinearLayout
+import com.ivianuu.kommonextensions.*
 
 class MainActivity : AppCompatActivity() {
 
