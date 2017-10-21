@@ -18,6 +18,24 @@ package com.ivianuu.kommonextensions
 
 import android.os.Build
 
+// CLASS
+/**
+ * Returns The name of the class.
+ */
+fun Any.className(): String = this::class.java.name
+
+/**
+ * Returns The simple name of the class.
+ */
+fun Any.classSimpleName(): String = this::class.java.simpleName
+
+/**
+ * Returns The canonical name of the class.
+ */
+fun Any.classCanonicalName(): String = this::class.java.canonicalName
+
+// SDKS
+
 /**
  * The current sdk
  */

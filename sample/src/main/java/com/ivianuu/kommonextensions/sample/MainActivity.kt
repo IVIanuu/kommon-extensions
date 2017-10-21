@@ -1,8 +1,12 @@
 package com.ivianuu.kommonextensions.sample
 
+import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.AppCompatButton
+import android.support.v7.widget.AppCompatTextView
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.ivianuu.kommonextensions.*
 
 class MainActivity : AppCompatActivity() {

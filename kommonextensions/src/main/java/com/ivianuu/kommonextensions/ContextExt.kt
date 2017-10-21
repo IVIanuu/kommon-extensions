@@ -31,6 +31,7 @@ import android.content.pm.LauncherApps
 import android.content.pm.ShortcutManager
 import android.content.res.ColorStateList
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.PorterDuff
@@ -76,11 +77,23 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
+import com.ivianuu.kommonextensions.ValueHolder.VALUE
+
+// INTENTS
 
 /**
  * Returns the intent for the component
  */
-inline fun <reified T : Any> Context.IntentFor(): Intent = Intent(this, T::class.java)
+inline fun <reified T : Any> Context.createIntent() = Intent(this, T::class.java)
+
+/**
+ * Returns the intent for the component and calls the initializer
+ */
+inline fun <reified T : Any> Context.createIntent(initializer: Intent.() -> Unit): Intent {
+    val intent = createIntent<T>()
+    initializer(intent)
+    return intent
+}
 
 // ATTRS
 
@@ -126,8 +139,7 @@ fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? =
  * Returns the attributes color state list
  */
 fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
-                                      defaultValue: ColorStateList?
-): ColorStateList? {
+                                      defaultValue: ColorStateList?): ColorStateList? {
     val array = getTypedArrayWithAttributes(attr)
     val colorStateList = array.getColorStateList(0)
     array.recycle()
@@ -357,7 +369,7 @@ fun Context.getResDimen(@DimenRes resId : Int) : Int = this.resources.getDimensi
  * Returns the float for this resource
  */
 fun Context.getResFloat(@DimenRes resId: Int) : Float {
-    val value = VALUE_HOLDER.VALUE
+    val value = VALUE
     resources.getValue(resId, value, true)
     return value.float
 }
@@ -446,7 +458,7 @@ fun Context.convertPxToDp(px: Int): Int {
     return (px / metrics.density).toInt()
 }
 
-private object VALUE_HOLDER {
+private object ValueHolder {
     val VALUE = TypedValue()
 }
 

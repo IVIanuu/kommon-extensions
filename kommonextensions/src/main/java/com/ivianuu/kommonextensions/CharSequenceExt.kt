@@ -16,3 +16,24 @@
 
 package com.ivianuu.kommonextensions
 
+import android.util.Patterns
+
+/**
+ * Returns whether this char sequence is a email or not
+ */
+fun CharSequence.isEmail() = Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+/**
+ * Returns whether this char sequence is a ip or not
+ */
+fun CharSequence.isIp() = Patterns.IP_ADDRESS.matcher(this).matches()
+
+/**
+ * Returns whether this char sequence is a email or not
+ */
+fun CharSequence.isUrl() = Patterns.WEB_URL.matcher(this).matches()
+
+/**
+ * Returns whether this char sequence is a phone number or not
+ */
+fun CharSequence.isPhone() = Patterns.PHONE.matcher(this).matches()

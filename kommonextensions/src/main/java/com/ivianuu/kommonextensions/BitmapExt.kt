@@ -18,8 +18,10 @@ package com.ivianuu.kommonextensions
 
 import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.util.Base64
+import android.util.Patterns
 import java.io.ByteArrayOutputStream
 
 /**
@@ -44,6 +46,16 @@ fun Bitmap.resize(width: Int, height: Int) : Bitmap {
         Bitmap.createBitmap(scaleBitmap, Math.round((scaleBitmap.width - width) / 2.0f), 0,
                 width, height)
     }
+}
+
+/**
+ * Flips a bitmap image 180 degrees.
+ */
+fun Bitmap.mirror(): Bitmap {
+    val matrix = Matrix()
+    matrix.preScale(-1f, 1f)
+
+    return Bitmap.createBitmap(this, 0, 0, width, height, matrix, false)
 }
 
 /**

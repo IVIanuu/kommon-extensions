@@ -18,6 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.app.Service
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -28,9 +29,9 @@ import android.view.WindowManager
 import android.widget.EditText
 
 /**
- * Returns the root view of this activity
+ * The content view of this activity
  */
-val Activity.rootView: View
+val Activity.contentView: View
     get() = findViewById(android.R.id.content)
 
 // START ACTIVITY
@@ -39,8 +40,18 @@ val Activity.rootView: View
  * Starts the activity
  */
 inline fun <reified T : Activity> Activity.startActivity() {
-    startActivity(Intent(this, T::class.java))
+    startActivity(createIntent<T>())
 }
+
+/**
+ * Starts the activity and calls the initializer on intent creation
+ */
+inline fun <reified T : Activity> Activity.startActivity(initializer: Intent.() -> Unit) {
+    val intent = createIntent<T>(initializer)
+    startActivity(intent)
+}
+
+// START SERVICE
 
 // KEYBOARD
 

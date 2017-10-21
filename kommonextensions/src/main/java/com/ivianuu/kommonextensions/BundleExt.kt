@@ -16,6 +16,7 @@
 
 package com.ivianuu.kommonextensions
 
+import android.content.Intent
 import android.os.Bundle
 
 inline fun createBundle(func: Bundle.() -> Unit): Bundle {
