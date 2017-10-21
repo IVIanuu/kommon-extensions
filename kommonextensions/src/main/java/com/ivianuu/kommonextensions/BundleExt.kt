@@ -16,36 +16,28 @@
 
 package com.ivianuu.kommonextensions
 
-import java.util.*
+import android.os.Bundle
 
-/**
- * Shuffles this list
- */
-fun MutableList<*>.shuffle() {
-    Collections.shuffle(this)
+inline fun createBundle(func: Bundle.() -> Unit): Bundle {
+    val bundle = Bundle()
+    bundle.func()
+    return bundle
 }
 
-/**
- * Returns a shuffled copy of this list
- */
-fun <T> MutableList<T>.shuffled(): List<T> {
-    val copy = toMutableList()
-    copy.shuffle()
-    return copy
+inline fun createBundle(loader: ClassLoader, func: Bundle.() -> Unit): Bundle {
+    val bundle = Bundle(loader)
+    bundle.func()
+    return bundle
 }
 
-/**
- * Swaps the to items
- */
-fun MutableList<*>.swap(from: Int, to: Int) {
-    Collections.swap(this, from, to)
+inline fun createBundle(capacity: Int, func: Bundle.() -> Unit): Bundle {
+    val bundle = Bundle(capacity)
+    bundle.func()
+    return bundle
 }
 
-/**
- * Returns a swapped copy of this list
- */
-fun <T> List<T>.swapped(from: Int, to: Int): List<T> {
-    val copy = toMutableList()
-    copy.swap(from, to)
-    return copy
+inline fun createBundle(b: Bundle?, func: Bundle.() -> Unit): Bundle {
+    val bundle = Bundle(b)
+    bundle.func()
+    return bundle
 }

@@ -46,6 +46,5 @@ fun Fragment.showInputMethod(v: EditText) {
 /**
  * Inflates the view
  */
-fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View {
-    return LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)
-}
+fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View =
+        LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)

@@ -21,9 +21,7 @@ import android.graphics.Color
 /**
  * Strips the color
  */
-fun Int.stripAlpha(): Int {
-    return 0xff000000.toInt() or this
-}
+fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
 fun Int.shift(by: Float): Int {
     if (by == 1f) return this
@@ -37,16 +35,12 @@ fun Int.shift(by: Float): Int {
 /**
  * Returns the darken color
  */
-fun Int.darken(): Int {
-    return shift(0.9f)
-}
+fun Int.darken(): Int = shift(0.9f)
 
 /**
  * Returns the lighten color
  */
-fun Int.lighten(): Int {
-    return shift(1.1f)
-}
+fun Int.lighten(): Int = shift(1.1f)
 
 /**
  * Returns whether the color is light
