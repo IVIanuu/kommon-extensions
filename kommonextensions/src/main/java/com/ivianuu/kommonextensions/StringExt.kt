@@ -16,28 +16,3 @@
 
 package com.ivianuu.kommonextensions
 
-import android.app.Fragment
-import android.support.annotation.LayoutRes
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-
-/**
- * Hides the soft input
- */
-fun Fragment.hideInputMethod() {
-    activity?.hideInputMethod()
-}
-
-/**
- * Shows the soft input
- */
-fun Fragment.showInputMethod(v: EditText) {
-    activity?.showInputMethod(v)
-}
-
-/**
- * Inflates the view
- */
-fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View = LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)

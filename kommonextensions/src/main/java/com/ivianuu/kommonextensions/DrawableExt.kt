@@ -35,10 +35,10 @@ fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap
         }
     }
 
-    if (intrinsicWidth <= 0 || intrinsicHeight <= 0) {
-        bitmap = Bitmap.createBitmap(1, 1, config)
+    bitmap = if (intrinsicWidth <= 0 || intrinsicHeight <= 0) {
+        Bitmap.createBitmap(1, 1, config)
     } else {
-        bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, config)
+        Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, config)
     }
 
     val canvas = Canvas(bitmap)

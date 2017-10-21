@@ -87,9 +87,7 @@ inline fun <reified T : Any> Context.IntentFor(): Intent = Intent(this, T::class
 /**
  * Returns the attributes boolean
  */
-fun Context.resolveBooleanAttr(@AttrRes attr: Int): Boolean {
-    return resolveBooleanAttr(attr, false)
-}
+fun Context.resolveBooleanAttr(@AttrRes attr: Int): Boolean = resolveBooleanAttr(attr, false)
 
 /**
  * Returns the attributes boolean
@@ -105,9 +103,7 @@ fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boole
  * Returns the attributes color
  */
 @ColorInt
-fun Context.resolveColorAttr(@AttrRes attr: Int): Int {
-    return resolveColorAttr(attr, -1)
-}
+fun Context.resolveColorAttr(@AttrRes attr: Int): Int = resolveColorAttr(attr, -1)
 
 /**
  * Returns the attributes color
@@ -123,9 +119,8 @@ fun Context.resolveColorAttr(@AttrRes attr: Int, @ColorInt defaultValue: Int): I
 /**
  * Returns the attributes color state list
  */
-fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? {
-    return resolveColorStateListAttr(attr, null)
-}
+fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? =
+        resolveColorStateListAttr(attr, null)
 
 /**
  * Returns the attributes color state list
@@ -143,9 +138,7 @@ fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
  * Returns the attributes dimension
  */
 @Dimension
-fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float {
-    return resolveDimensionAttr(attr, -1f)
-}
+fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float = resolveDimensionAttr(attr, -1f)
 
 /**
  * Returns the attributes dimension
@@ -162,9 +155,8 @@ fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Fl
  * Returns the attributes dimension pixel offset
  */
 @Px
-fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int {
-    return resolveDimensionPixelOffsetAttr(attr, -1)
-}
+fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int =
+        resolveDimensionPixelOffsetAttr(attr, -1)
 
 /**
  * Returns the attributes dimension pixel offset
@@ -181,9 +173,8 @@ fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue
  * Returns the attributes dimension pixel size
  */
 @Px
-fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int {
-    return resolveDimensionPixelSizeAttr(attr, -1)
-}
+fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int =
+        resolveDimensionPixelSizeAttr(attr, -1)
 
 /**
  * Returns the attributes dimension pixel size
@@ -199,9 +190,7 @@ fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: 
 /**
  * Returns the attributes drawable
  */
-fun Context.resolveDrawableAttr(@AttrRes attr: Int): Drawable? {
-    return resolveDrawableAttr(attr, null)
-}
+fun Context.resolveDrawableAttr(@AttrRes attr: Int): Drawable? = resolveDrawableAttr(attr, null)
 
 /**
  * Returns the attributes drawable
@@ -216,9 +205,7 @@ fun Context.resolveDrawableAttr(@AttrRes attr: Int, defaultValue: Drawable?): Dr
 /**
  * Returns the attributes float
  */
-fun Context.resolveFloatAttr(@AttrRes attr: Int): Float {
-    return resolveFloatAttr(attr, -1f)
-}
+fun Context.resolveFloatAttr(@AttrRes attr: Int): Float = resolveFloatAttr(attr, -1f)
 
 /**
  * Returns the attributes float
@@ -233,9 +220,7 @@ fun Context.resolveFloatAttr(@AttrRes attr: Int, defaultValue: Float): Float {
 /**
  * Returns the attributes font
  */
-fun Context.resolveFontAttr(@AttrRes attr: Int): Typeface? {
-    return resolveFontAttr(attr, null)
-}
+fun Context.resolveFontAttr(@AttrRes attr: Int): Typeface? = resolveFontAttr(attr, null)
 
 /**
  * Returns the attributes font
@@ -251,9 +236,7 @@ fun Context.resolveFontAttr(@AttrRes attr: Int, defaultValue: Typeface?): Typefa
 /**
  * Returns the attributes int
  */
-fun Context.resolveIntAttr(@AttrRes attr: Int): Int {
-    return resolveIntAttr(attr, -1)
-}
+fun Context.resolveIntAttr(@AttrRes attr: Int): Int = resolveIntAttr(attr, -1)
 
 /**
  * Returns the attributes int
@@ -268,9 +251,7 @@ fun Context.resolveIntAttr(@AttrRes attr: Int, defaultValue: Int): Int {
 /**
  * Returns the attributes integer
  */
-fun Context.resolveIntegerAttr(@AttrRes attr: Int): Int {
-    return resolveIntegerAttr(attr, -1)
-}
+fun Context.resolveIntegerAttr(@AttrRes attr: Int): Int = resolveIntegerAttr(attr, -1)
 
 /**
  * Returns the attributes integer
@@ -285,9 +266,7 @@ fun Context.resolveIntegerAttr(@AttrRes attr: Int, defaultValue: Int?): Int {
 /**
  * Returns the attributes string
  */
-fun Context.resolveStringAttr(@AttrRes attr: Int): String? {
-    return resolveStringAttr(attr, null)
-}
+fun Context.resolveStringAttr(@AttrRes attr: Int): String? = resolveStringAttr(attr, null)
 
 /**
  * Returns the attributes string
@@ -302,9 +281,7 @@ fun Context.resolveStringAttr(@AttrRes attr: Int, defaultValue: String?): String
 /**
  * Returns the attributes text
  */
-fun Context.resolveTextAttr(@AttrRes attr: Int): CharSequence? {
-    return resolveStringAttr(attr, null)
-}
+fun Context.resolveTextAttr(@AttrRes attr: Int): CharSequence? = resolveStringAttr(attr, null)
 
 /**
  * Returns the attributes text
@@ -319,9 +296,8 @@ fun Context.resolveTextAttr(@AttrRes attr: Int, defaultValue: CharSequence?): Ch
 /**
  * Returns the attributes text array
  */
-fun Context.resolveTextArrayAttr(@AttrRes attr: Int): Array<CharSequence>? {
-    return resolveTextArrayAttr(attr, null)
-}
+fun Context.resolveTextArrayAttr(@AttrRes attr: Int): Array<CharSequence>? =
+        resolveTextArrayAttr(attr, null)
 
 /**
  * Returns the attributes text array
@@ -334,61 +310,48 @@ fun Context.resolveTextArrayAttr(@AttrRes attr: Int,
     return charSequence ?: defaultValue
 }
 
-private fun Context.getTypedArrayWithAttributes(vararg attr: Int): TypedArray {
-    return theme.obtainStyledAttributes(attr)
-}
+private fun Context.getTypedArrayWithAttributes(vararg attr: Int): TypedArray =
+        theme.obtainStyledAttributes(attr)
 
 // RESOURCES
 
 /**
  * Returns the animation for this resource
  */
-fun Context.getResAnim(@AnimRes resId: Int) : Animation {
-    return AnimationUtils.loadAnimation(this, resId)
-}
+fun Context.getResAnim(@AnimRes resId: Int) : Animation = AnimationUtils.loadAnimation(this, resId)
 
 /**
  * Returns the int array for this resource
  */
-fun Context.getResIntArray(@ArrayRes resId: Int) : IntArray {
-    return resources.getIntArray(resId)
-}
+fun Context.getResIntArray(@ArrayRes resId: Int) : IntArray = resources.getIntArray(resId)
 
 /**
  * Returns the string array for this resource
  */
-fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> {
-    return resources.getStringArray(resId)
-}
+fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> =
+        resources.getStringArray(resId)
 
 /**
  * Returns the text array for this resource
  */
-fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> {
-    return resources.getTextArray(resId)
-}
+fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> =
+        resources.getTextArray(resId)
 
 /**
  * Returns the typed array for this resource
  */
-fun Context.getResTypedArray(@ArrayRes resId: Int) : TypedArray {
-    return resources.obtainTypedArray(resId)
-}
+fun Context.getResTypedArray(@ArrayRes resId: Int) : TypedArray = resources.obtainTypedArray(resId)
 
 /**
  * Returns the boolean for this resource
  */
-fun Context.getResBool(@BoolRes resId: Int) : Boolean {
-    return resources.getBoolean(resId)
-}
+fun Context.getResBool(@BoolRes resId: Int) : Boolean = resources.getBoolean(resId)
 
 /**
  * Returns the dimen for this resource
  */
 @Px
-fun Context.getResDimen(@DimenRes resId : Int) : Int {
-    return this.resources.getDimensionPixelSize(resId)
-}
+fun Context.getResDimen(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelSize(resId)
 
 /**
  * Returns the float for this resource
@@ -402,52 +365,41 @@ fun Context.getResFloat(@DimenRes resId: Int) : Float {
 /**
  * Returns the int for this resource
  */
-fun Context.getResInt(@IntegerRes resId: Int) : Int {
-    return resources.getInteger(resId)
-}
+fun Context.getResInt(@IntegerRes resId: Int) : Int = resources.getInteger(resId)
 
 /**
  * Returns the vector drawable for this resource
  */
-fun Context.getResVectorDrawable(@DrawableRes resId: Int): Drawable {
-    return VectorDrawableCompat.create(this.resources, resId, this.theme) as Drawable
-}
+fun Context.getResVectorDrawable(@DrawableRes resId: Int): Drawable =
+        VectorDrawableCompat.create(this.resources, resId, this.theme) as Drawable
 
 /**
  * Returns the bitmap for this resource
  */
-fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap {
-    return getResDrawable(resId).toBitmap()
-}
+fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawable(resId).toBitmap()
 
 /**
  * Returns the color for this resource
  */
 @ColorInt
-fun Context.getResColor(@ColorRes resId: Int) : Int {
-    return ContextCompat.getColor(this, resId)
-}
+fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 
 /**
  * Returns the color state list for this resource
  */
-fun Context.getResColorStateList(resId: Int) : ColorStateList {
-    return ContextCompat.getColorStateList(this, resId)
-}
+fun Context.getResColorStateList(resId: Int) : ColorStateList =
+        ContextCompat.getColorStateList(this, resId)
 
 /**
  * Returns the drawable for this resource
  */
-fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable {
-    return ContextCompat.getDrawable(this, resId)
-}
+fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable =
+        ContextCompat.getDrawable(this, resId)
 
 /**
  * Returns the font for this resource
  */
-fun Context.getResFont(@FontRes resId: Int) : Typeface {
-    return ResourcesCompat.getFont(this, resId)!!
-}
+fun Context.getResFont(@FontRes resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
 
 // TINTED DRAWABLES
 
@@ -503,23 +455,18 @@ private object VALUE_HOLDER {
 /**
  * Returns whether is portrait
  */
-fun Context.isPortrait(): Boolean {
-    return !isLandscape()
-}
+fun Context.isPortrait(): Boolean = !isLandscape()
 
 /**
  * Returns whether is landscape
  */
-fun Context.isLandscape(): Boolean {
-    return resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-}
+fun Context.isLandscape(): Boolean =
+        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
 /**
  * Returns the current rotation
  */
-fun Context.getRotation(): Int {
-    return windowManager.defaultDisplay.rotation
-}
+fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
 
 /**
  * Returns the screen height
@@ -567,9 +514,8 @@ fun Context.getRealScreenWidth(): Int {
 /**
  * Returns whether is tablet
  */
-fun Context.isTablet(): Boolean {
-    return resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_LARGE
-}
+fun Context.isTablet(): Boolean =
+        resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_LARGE
 
 /**
  * Returns whether has navigation bar

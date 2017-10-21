@@ -32,16 +32,16 @@ fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     val widthRatio = srcWidth.toFloat() / width.toFloat()
     val heightRatio = srcHeight.toFloat() / height.toFloat()
 
-    if (widthRatio < heightRatio) {
+    return if (widthRatio < heightRatio) {
         val scaleBitmap = Bitmap.createScaledBitmap(this, width,
                 Math.round(srcHeight / widthRatio), true)
-        return Bitmap.createBitmap(scaleBitmap, 0, Math.round((scaleBitmap.height - height) / 2.0f),
+        Bitmap.createBitmap(scaleBitmap, 0, Math.round((scaleBitmap.height - height) / 2.0f),
                 width, height)
     } else {
         val scaleBitmap = Bitmap.createScaledBitmap(this, Math.round(srcWidth / heightRatio),
                 height, true)
 
-        return Bitmap.createBitmap(scaleBitmap, Math.round((scaleBitmap.width - width) / 2.0f), 0,
+        Bitmap.createBitmap(scaleBitmap, Math.round((scaleBitmap.width - width) / 2.0f), 0,
                 width, height)
     }
 }
@@ -59,6 +59,4 @@ fun Bitmap.toBase64() : String {
 /**
  * Returns this bitmap as drawable
  */
-fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable {
-    return BitmapDrawable(resources, this)
-}
+fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable = BitmapDrawable(resources, this)

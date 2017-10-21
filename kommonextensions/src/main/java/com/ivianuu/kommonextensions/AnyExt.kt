@@ -84,10 +84,24 @@ val isNougatMr1 = currentSdk >= Build.VERSION_CODES.N_MR1
 val isOreo = currentSdk >= Build.VERSION_CODES.O
 
 /**
+ * Invokes the function if the current sdk is greater than the sdk
+ */
+inline fun aboveSdk(sdk: Int, func: () -> Unit) {
+    if (currentSdk > sdk) func()
+}
+
+/**
  * Invokes the function if the sdk is greater or equal to the current sdk
  */
 inline fun onSdk(sdk: Int, func: () -> Unit) {
     if (currentSdk >= sdk) func()
+}
+
+/**
+ * Invokes the function if the current sdk is smaller than the sdk
+ */
+inline fun belowSdk(sdk: Int, func: () -> Unit) {
+    if (currentSdk < sdk) func()
 }
 
 /**
