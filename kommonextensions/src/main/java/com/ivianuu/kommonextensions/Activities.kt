@@ -412,3 +412,9 @@ fun Activity.supportFinishAfterTransition() {
 fun Activity.supportFinishAffinity() {
     ActivityCompat.finishAffinity(this)
 }
+
+/** Brings back result of this activity to previous activity that started it. */
+inline fun Activity.finishWithResult(resultCode: Int, data: Intent) {
+    setResult(resultCode, data)
+    finish()
+}

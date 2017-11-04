@@ -16,36 +16,17 @@
 
 package com.ivianuu.kommonextensions
 
-import java.util.*
+/**
+ * Returns The name of the class.
+ */
+fun Any.className(): String = this::class.java.name
 
 /**
- * Shuffles this list
+ * Returns The simple name of the class.
  */
-fun MutableList<*>.shuffle() {
-    Collections.shuffle(this)
-}
+fun Any.classSimpleName(): String = this::class.java.simpleName
 
 /**
- * Returns a shuffled copy of this list
+ * Returns The canonical name of the class.
  */
-fun <T> MutableList<T>.shuffled(): List<T> {
-    val copy = toMutableList()
-    copy.shuffle()
-    return copy
-}
-
-/**
- * Swaps the to items
- */
-fun MutableList<*>.swap(from: Int, to: Int) {
-    Collections.swap(this, from, to)
-}
-
-/**
- * Returns a swapped copy of this list
- */
-fun <T> List<T>.swapped(from: Int, to: Int): List<T> {
-    val copy = toMutableList()
-    copy.swap(from, to)
-    return copy
-}
+fun Any.classCanonicalName(): String = this::class.java.canonicalName

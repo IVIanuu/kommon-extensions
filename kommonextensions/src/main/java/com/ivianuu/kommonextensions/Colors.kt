@@ -17,6 +17,12 @@
 package com.ivianuu.kommonextensions
 
 import android.graphics.Color
+import android.support.annotation.ColorInt
+
+/**
+ * Parses this string and returns his color
+ */
+@ColorInt inline fun String.toColorInt(): Int = Color.parseColor(this)
 
 /**
  * Strips the color
