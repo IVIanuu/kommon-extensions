@@ -70,6 +70,7 @@ import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.Surface
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.CaptioningManager
@@ -246,20 +247,23 @@ fun Context.isPortrait(): Boolean = !isLandscape()
 /**
  * Returns whether is landscape
  */
-fun Context.isLandscape(): Boolean =
-        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+fun Context.isLandscape(): Boolean {
+    val rotation = getRotation()
+    return rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270
+}
 
 /**
  * Returns the current rotation
  */
 fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
 
+private val metrics = DisplayMetrics()
+
 /**
  * Returns the screen height
  */
 @Px
 fun Context.getScreenHeight(): Int {
-    val metrics = DisplayMetrics()
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.heightPixels
 }
@@ -269,7 +273,6 @@ fun Context.getScreenHeight(): Int {
  */
 @Px
 fun Context.getScreenWidth(): Int {
-    val metrics = DisplayMetrics()
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.widthPixels
 }
@@ -280,7 +283,6 @@ fun Context.getScreenWidth(): Int {
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 fun Context.getRealScreenHeight(): Int {
-    val metrics = DisplayMetrics()
     windowManager.defaultDisplay.getRealMetrics(metrics)
     return metrics.heightPixels
 }
@@ -291,7 +293,6 @@ fun Context.getRealScreenHeight(): Int {
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 fun Context.getRealScreenWidth(): Int {
-    val metrics = DisplayMetrics()
     windowManager.defaultDisplay.getRealMetrics(metrics)
     return metrics.widthPixels
 }
