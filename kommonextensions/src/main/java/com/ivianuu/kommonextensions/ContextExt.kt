@@ -219,10 +219,9 @@ fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
 /**
  * Converts dp to pixels
  */
-@Px
-fun Context.convertDpToPx(dp: Int): Int {
+fun Context.convertDpToPx(dp: Int): Float {
     val metrics = resources.displayMetrics
-    return (dp * metrics.density).toInt()
+    return (dp * metrics.density)
 }
 
 /**
