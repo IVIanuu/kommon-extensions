@@ -21,20 +21,20 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-fun CharSequence.isEmail() = Patterns.EMAIL_ADDRESS.matcher(this).matches()
+inline fun CharSequence.isEmail() = Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
-fun CharSequence.isIp() = Patterns.IP_ADDRESS.matcher(this).matches()
+inline fun CharSequence.isIp() = Patterns.IP_ADDRESS.matcher(this).matches()
 
-fun CharSequence.isUrl() = Patterns.WEB_URL.matcher(this).matches()
+inline fun CharSequence.isUrl() = Patterns.WEB_URL.matcher(this).matches()
 
-fun CharSequence.isPhone() = Patterns.PHONE.matcher(this).matches()
+inline fun CharSequence.isPhone() = Patterns.PHONE.matcher(this).matches()
 
-fun String.md5(): String {
+inline fun String.md5(): String {
     return try {
         val md = MessageDigest.getInstance("MD5")
         val messageDigest = md.digest(toByteArray())
         val number = BigInteger(1, messageDigest)
-        var md5 = number.toString(16)
+        var  md5 = number.toString(16)
 
         while (md5.length < 32)
             md5 = "0" + md5

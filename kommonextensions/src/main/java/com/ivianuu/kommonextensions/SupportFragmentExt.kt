@@ -24,21 +24,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 
-val Fragment.nonNullContext get() = context!!
+inline val Fragment.nonNullContext get() = context!!
 
-val Fragment.nonNullActivity get() = activity!!
+inline val Fragment.nonNullActivity get() = activity!!
 
-val Fragment.appCompatActivity get() = activity as AppCompatActivity?
+inline val Fragment.appCompatActivity get() = activity as AppCompatActivity?
 
-val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
+inline val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
 
-fun Fragment.hideInputMethod() {
+inline fun Fragment.hideInputMethod() {
     activity?.hideInputMethod()
 }
 
-fun Fragment.showInputMethod(v: EditText) {
+inline fun Fragment.showInputMethod(v: EditText) {
     activity?.showInputMethod(v)
 }
 
-fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View =
+inline fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View =
         LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)

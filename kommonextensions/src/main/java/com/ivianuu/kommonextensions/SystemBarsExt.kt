@@ -27,53 +27,53 @@ import android.view.WindowManager
 // SYSTEM BARS
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setSystemBarColor(@ColorInt color: Int) {
+inline fun Activity.setSystemBarColor(@ColorInt color: Int) {
     setStatusBarColor(color)
     setNavigationBarColor(color)
 }
 
-fun Activity.supportSetSystemBarColor(@ColorInt color: Int) {
+inline fun Activity.supportSetSystemBarColor(@ColorInt color: Int) {
     if (isLollipop) {
         setSystemBarColor(color)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.KITKAT)
-fun Activity.setTranslucentSystemBars(enabled: Boolean = true) {
+inline fun Activity.setTranslucentSystemBars(enabled: Boolean = true) {
     setTranslucentStatusBar(enabled)
     setTranslucentNavigationBar(enabled)
 }
 
-fun Activity.supportSetTranslucentSystemBars(enabled: Boolean = true) {
+inline fun Activity.supportSetTranslucentSystemBars(enabled: Boolean = true) {
     if (isKitkat) {
         setTranslucentSystemBars(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setTransparentSystemBars(enabled: Boolean = true) {
+inline fun Activity.setTransparentSystemBars(enabled: Boolean = true) {
     setTransparentStatusBar(enabled)
     setTransparentNavigationBar(enabled)
 }
 
-fun Activity.supportSetTransparentSystemBars(enabled: Boolean = true) {
+inline fun Activity.supportSetTransparentSystemBars(enabled: Boolean = true) {
     if (isLollipop) {
         setTransparentSystemBars(enabled)
     }
 }
 
-fun Activity.setSystemBarsHidden(hidden: Boolean = true) {
+inline fun Activity.setSystemBarsHidden(hidden: Boolean = true) {
     setStatusBarHidden(hidden)
     setNavigationBarHidden(hidden)
 }
 
 @TargetApi(Build.VERSION_CODES.O)
-fun Activity.setSystemBarsLight(enabled: Boolean = true) {
+inline fun Activity.setSystemBarsLight(enabled: Boolean = true) {
     setLightStatusBar(enabled)
     setLightNavigationBar(enabled)
 }
 
-fun Activity.supportSetSystemBarsLight(enabled: Boolean = true) {
+inline fun Activity.supportSetSystemBarsLight(enabled: Boolean = true) {
     if (isOreo) {
         setSystemBarsLight(enabled)
     }
@@ -82,18 +82,18 @@ fun Activity.supportSetSystemBarsLight(enabled: Boolean = true) {
 // STATUS BAR
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setStatusBarColor(@ColorInt color: Int) {
+inline fun Activity.setStatusBarColor(@ColorInt color: Int) {
     window.statusBarColor = color
 }
 
-fun Activity.supportSetStatusBarColor(@ColorInt color: Int) {
+inline fun Activity.supportSetStatusBarColor(@ColorInt color: Int) {
     if (isLollipop) {
         setStatusBarColor(color)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.M)
-fun Activity.setLightStatusBar(enabled: Boolean = true) {
+inline fun Activity.setLightStatusBar(enabled: Boolean = true) {
     val decorView = window.decorView
     val systemUiVisibility = decorView.systemUiVisibility
     if (enabled) {
@@ -103,14 +103,14 @@ fun Activity.setLightStatusBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetLightStatusBar(enabled: Boolean = true) {
+inline fun Activity.supportSetLightStatusBar(enabled: Boolean = true) {
     if (isMarshmallow) {
         setLightStatusBar(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-fun Activity.setDrawUnderStatusBar(enabled: Boolean = true) {
+inline fun Activity.setDrawUnderStatusBar(enabled: Boolean = true) {
     val decorView = window.decorView
     val systemUiVisibility = decorView.systemUiVisibility
     val flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -121,14 +121,14 @@ fun Activity.setDrawUnderStatusBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetDrawUnderStatusBar(enabled: Boolean = true) {
+inline fun Activity.supportSetDrawUnderStatusBar(enabled: Boolean = true) {
     if (isJellyBean) {
         setDrawUnderStatusBar(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.KITKAT)
-fun Activity.setTranslucentStatusBar(enabled: Boolean = true) {
+inline fun Activity.setTranslucentStatusBar(enabled: Boolean = true) {
     val winParams = window.attributes
     if (enabled) {
         winParams.flags = winParams.flags or WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -137,14 +137,14 @@ fun Activity.setTranslucentStatusBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetTranslucentStatusBar(enabled: Boolean = true) {
+inline fun Activity.supportSetTranslucentStatusBar(enabled: Boolean = true) {
     if (isKitkat) {
         setTranslucentStatusBar(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setTransparentStatusBar(enabled: Boolean = true) {
+inline fun Activity.setTransparentStatusBar(enabled: Boolean = true) {
     if (enabled) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         setStatusBarColor(Color.TRANSPARENT)
@@ -155,13 +155,13 @@ fun Activity.setTransparentStatusBar(enabled: Boolean = true) {
     setDrawUnderStatusBar(enabled)
 }
 
-fun Activity.supportSetTransparentStatusBar(enabled: Boolean = true) {
+inline fun Activity.supportSetTransparentStatusBar(enabled: Boolean = true) {
     if (isLollipop) {
         setTransparentStatusBar(enabled)
     }
 }
 
-fun Activity.setStatusBarHidden(hidden: Boolean = true) {
+inline fun Activity.setStatusBarHidden(hidden: Boolean = true) {
     if (hidden) {
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
     } else {
@@ -172,18 +172,18 @@ fun Activity.setStatusBarHidden(hidden: Boolean = true) {
 // NAVIGATION BAR
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setNavigationBarColor(@ColorInt color: Int) {
+inline fun Activity.setNavigationBarColor(@ColorInt color: Int) {
     window.navigationBarColor = color
 }
 
-fun Activity.supportSetNavigationBarColor(@ColorInt color: Int) {
+inline fun Activity.supportSetNavigationBarColor(@ColorInt color: Int) {
     if (isLollipop) {
         setNavigationBarColor(color)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.KITKAT)
-fun Activity.setTranslucentNavigationBar(enabled: Boolean = true) {
+inline fun Activity.setTranslucentNavigationBar(enabled: Boolean = true) {
     val winParams = window.attributes
     if (enabled) {
         winParams.flags = winParams.flags or WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
@@ -192,14 +192,14 @@ fun Activity.setTranslucentNavigationBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetTranslucentNavigationBar(enabled: Boolean = true) {
+inline fun Activity.supportSetTranslucentNavigationBar(enabled: Boolean = true) {
     if (isKitkat) {
         setTranslucentNavigationBar(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setTransparentNavigationBar(enabled: Boolean = true) {
+inline fun Activity.setTransparentNavigationBar(enabled: Boolean = true) {
     if (enabled) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
@@ -209,16 +209,16 @@ fun Activity.setTransparentNavigationBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetTransparentNavigationBar(enabled: Boolean = true) {
+inline fun Activity.supportSetTransparentNavigationBar(enabled: Boolean = true) {
     if (isLollipop) {
         setTransparentNavigationBar(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.KITKAT)
-fun Activity.setNavigationBarHidden(enabled: Boolean = true) {
+inline fun Activity.setNavigationBarHidden(enabled: Boolean = true) {
     val decorView = window.decorView
-    var systemUiVisibility = decorView.systemUiVisibility
+    var  systemUiVisibility = decorView.systemUiVisibility
     if (enabled) {
         decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
                 View.SYSTEM_UI_FLAG_IMMERSIVE or
@@ -231,14 +231,14 @@ fun Activity.setNavigationBarHidden(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetNavigationBarHidden(enabled: Boolean = true) {
+inline fun Activity.supportSetNavigationBarHidden(enabled: Boolean = true) {
     if (isKitkat) {
         setNavigationBarHidden(enabled)
     }
 }
 
 @TargetApi(Build.VERSION_CODES.O)
-fun Activity.setLightNavigationBar(enabled: Boolean = true) {
+inline fun Activity.setLightNavigationBar(enabled: Boolean = true) {
     val decorView = window.decorView
     val systemUiVisibility = decorView.systemUiVisibility
     if (enabled) {
@@ -248,7 +248,7 @@ fun Activity.setLightNavigationBar(enabled: Boolean = true) {
     }
 }
 
-fun Activity.supportSetLightNavigationBar(enabled: Boolean = true) {
+inline fun Activity.supportSetLightNavigationBar(enabled: Boolean = true) {
     if (isOreo) {
         setLightNavigationBar(enabled)
     }

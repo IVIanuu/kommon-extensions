@@ -23,7 +23,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 
-fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap {
+inline fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap {
     val bitmap: Bitmap
 
     if (this is BitmapDrawable) {
@@ -44,7 +44,7 @@ fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap
     return bitmap
 }
 
-fun Drawable.tint(@ColorInt color: Int,
+inline fun Drawable.tint(@ColorInt color: Int,
                   mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN,
                   mutate: Boolean = true) {
     setColorFilter(color, mode)

@@ -21,61 +21,61 @@ import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 
-fun View.setVisible() {
+inline fun View.setVisible() {
     visibility = View.VISIBLE
 }
 
-fun View.setVisible(visible: Boolean) {
+inline fun View.setVisible(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }
 
-fun View.setVisible(predicate: () -> Boolean) = setVisible(predicate())
+inline fun View.setVisible(predicate: () -> Boolean) = setVisible(predicate())
 
-fun View.setInvisible() {
+inline fun View.setInvisible() {
     visibility = View.INVISIBLE
 }
 
-fun View.setInvisible(invisible: Boolean) {
+inline fun View.setInvisible(invisible: Boolean) {
     visibility = if (invisible) View.INVISIBLE else View.VISIBLE
 }
 
-fun View.setInvisible(predicate: () -> Boolean) = setInvisible(predicate())
+inline fun View.setInvisible(predicate: () -> Boolean) = setInvisible(predicate())
 
-fun View.setGone() {
+inline fun View.setGone() {
     visibility = View.GONE
 }
 
-fun View.setGone(gone: Boolean) {
+inline fun View.setGone(gone: Boolean) {
     visibility = if (gone) View.GONE else View.VISIBLE
 }
 
-fun View.setGone(predicate: () -> Boolean) = setGone(predicate())
+inline fun View.setGone(predicate: () -> Boolean) = setGone(predicate())
 
-fun View.isVisible() = visibility == View.VISIBLE
+inline fun View.isVisible() = visibility == View.VISIBLE
 
-fun View.isInvisible() = visibility == View.INVISIBLE
+inline fun View.isInvisible() = visibility == View.INVISIBLE
 
-fun View.isGone() = visibility == View.GONE
+inline fun View.isGone() = visibility == View.GONE
 
-fun View.setPaddingLeft(padding: Int) = setPadding(padding, paddingTop, paddingRight, paddingBottom)
+inline fun View.setPaddingLeft(padding: Int) = setPadding(padding, paddingTop, paddingRight, paddingBottom)
 
-fun View.setPaddingRight(padding: Int) = setPadding(paddingLeft, paddingTop, padding, paddingBottom)
+inline fun View.setPaddingRight(padding: Int) = setPadding(paddingLeft, paddingTop, padding, paddingBottom)
 
-fun View.setPaddingTop(padding: Int) = setPadding(paddingLeft, padding, paddingRight, paddingBottom)
+inline fun View.setPaddingTop(padding: Int) = setPadding(paddingLeft, padding, paddingRight, paddingBottom)
 
-fun View.setPaddingBottom(padding: Int) = setPadding(paddingLeft, paddingTop, paddingRight, padding)
-
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-fun View.setPaddingStart(padding: Int) = setPaddingRelative(padding, paddingTop, paddingEnd, paddingBottom)
+inline fun View.setPaddingBottom(padding: Int) = setPadding(paddingLeft, paddingTop, paddingRight, padding)
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-fun View.setPaddingEnd(padding: Int) = setPaddingRelative(paddingStart, paddingTop, padding, paddingBottom)
+inline fun View.setPaddingStart(padding: Int) = setPaddingRelative(padding, paddingTop, paddingEnd, paddingBottom)
 
-fun View.setAllPadding(padding: Int) {
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+inline fun View.setPaddingEnd(padding: Int) = setPaddingRelative(paddingStart, paddingTop, padding, paddingBottom)
+
+inline fun View.setAllPadding(padding: Int) {
     setPadding(padding, padding, padding, padding)
 }
 
-fun View.setOptionalPadding(left: Int = paddingLeft,
+inline fun View.setOptionalPadding(left: Int = paddingLeft,
                             top: Int = paddingTop,
                             right: Int = paddingRight,
                             bottom: Int = paddingBottom) {
@@ -83,50 +83,50 @@ fun View.setOptionalPadding(left: Int = paddingLeft,
 }
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-fun View.setOptionalRelativePadding(start: Int = paddingStart,
+inline fun View.setOptionalRelativePadding(start: Int = paddingStart,
                                     top: Int = paddingTop,
                                     end: Int = paddingEnd,
                                     bottom: Int = paddingBottom) {
     setPaddingRelative(start, top, end, bottom)
 }
 
-var View.marginLeft
+inline var View.marginLeft
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.leftMargin ?: 0
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.leftMargin = value }
 
-var View.marginTop
+inline var View.marginTop
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.topMargin ?: 0
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.topMargin = value }
 
-var View.marginRight
+inline var View.marginRight
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.rightMargin ?: 0
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.rightMargin = value }
 
-var View.marginBottom
+inline var View.marginBottom
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.bottomMargin ?: 0
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.bottomMargin = value }
 
-var View.marginStart
+inline var View.marginStart
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.marginStart ?: 0
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.marginStart = value }
 
-var View.marginEnd
+inline var  View.marginEnd
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() = (layoutParams as ViewGroup.MarginLayoutParams?)?.marginEnd ?: 0
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     set(value) { (layoutParams as ViewGroup.MarginLayoutParams?)?.marginEnd = value }
 
-fun View.setAllMargin(int: Int) {
+inline fun View.setAllMargin(int: Int) {
     setOptionalMargin(int, int, int, int)
 }
 
-fun View.setAllRelativeMargin(int: Int) {
+inline fun View.setAllRelativeMargin(int: Int) {
     setOptionalRelativeMargin(int, int, int, int)
 }
 
-fun View.setOptionalMargin(left: Int = marginLeft,
+inline fun View.setOptionalMargin(left: Int = marginLeft,
                            top: Int = marginTop,
                            right: Int = marginRight,
                            bottom: Int = marginBottom) {
@@ -137,7 +137,7 @@ fun View.setOptionalMargin(left: Int = marginLeft,
 }
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-fun View.setOptionalRelativeMargin(start: Int = marginStart,
+inline fun View.setOptionalRelativeMargin(start: Int = marginStart,
                                    top: Int = marginTop,
                                    end: Int = marginEnd,
                                    bottom: Int = marginBottom) {
@@ -147,20 +147,18 @@ fun View.setOptionalRelativeMargin(start: Int = marginStart,
     marginBottom = bottom
 }
 
-fun View.setHeight(height: Int) {
+inline fun View.setHeight(height: Int) {
     resize(height = height)
 }
 
-fun View.setWidth(width: Int) {
+inline fun View.setWidth(width: Int) {
     resize(width = width)
 }
 
-fun View.resize(width: Int = getWidth(), height: Int = getHeight()) {
-    val lp = layoutParams
-
-    lp?.let {
-        lp.width = width
-        lp.height = height
-        layoutParams = lp
+inline fun View.resize(width: Int = getWidth(), height: Int = getHeight()) {
+    layoutParams?.let {
+        it.width = width
+        it.height = height
+        layoutParams = it
     }
 }

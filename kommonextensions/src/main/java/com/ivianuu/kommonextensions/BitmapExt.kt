@@ -23,7 +23,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.Base64
 import java.io.ByteArrayOutputStream
 
-fun Bitmap.resize(width: Int, height: Int) : Bitmap {
+inline fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     val srcWidth = getWidth()
     val srcHeight = getHeight()
 
@@ -44,18 +44,18 @@ fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     }
 }
 
-fun Bitmap.mirror(): Bitmap {
+inline fun Bitmap.mirror(): Bitmap {
     val matrix = Matrix()
     matrix.preScale(-1f, 1f)
 
     return Bitmap.createBitmap(this, 0, 0, width, height, matrix, false)
 }
 
-fun Bitmap.toBase64() : String {
+inline fun Bitmap.toBase64() : String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
     val b = byteArrayOutputStream.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
 
-fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable = BitmapDrawable(resources, this)
+inline fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable = BitmapDrawable(resources, this)

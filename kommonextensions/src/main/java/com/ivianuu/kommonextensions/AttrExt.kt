@@ -28,9 +28,9 @@ import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
 import android.support.annotation.Px
 
-fun Context.resolveBooleanAttr(@AttrRes attr: Int): Boolean = resolveBooleanAttr(attr, false)
+inline fun Context.resolveBooleanAttr(@AttrRes attr: Int): Boolean = resolveBooleanAttr(attr, false)
 
-fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boolean {
+inline fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boolean {
     val array = getTypedArrayWithAttributes(attr)
     val bool = array.getBoolean(0, defaultValue)
     array.recycle()
@@ -38,20 +38,20 @@ fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boole
 }
 
 @ColorInt
-fun Context.resolveColorAttr(@AttrRes attr: Int): Int = resolveColorAttr(attr, -1)
+inline fun Context.resolveColorAttr(@AttrRes attr: Int): Int = resolveColorAttr(attr, -1)
 
 @ColorInt
-fun Context.resolveColorAttr(@AttrRes attr: Int, @ColorInt defaultValue: Int): Int {
+inline fun Context.resolveColorAttr(@AttrRes attr: Int, @ColorInt defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val color = array.getColor(0, defaultValue)
     array.recycle()
     return color
 }
 
-fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? =
+inline fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? =
         resolveColorStateListAttr(attr, null)
 
-fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
+inline fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
                                       defaultValue: ColorStateList?): ColorStateList? {
     val array = getTypedArrayWithAttributes(attr)
     val colorStateList = array.getColorStateList(0)
@@ -60,10 +60,10 @@ fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
 }
 
 @Dimension
-fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float = resolveDimensionAttr(attr, -1f)
+inline fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float = resolveDimensionAttr(attr, -1f)
 
 @Dimension
-fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Float): Float {
+inline fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Float): Float {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimension(0, defaultValue)
     array.recycle()
@@ -71,11 +71,11 @@ fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Fl
 }
 
 @Px
-fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int =
+inline fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int =
         resolveDimensionPixelOffsetAttr(attr, -1)
 
 @Px
-fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
+inline fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimensionPixelOffset(0, defaultValue)
     array.recycle()
@@ -83,91 +83,91 @@ fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue
 }
 
 @Px
-fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int =
+inline fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int =
         resolveDimensionPixelSizeAttr(attr, -1)
 
 @Px
-fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
+inline fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimensionPixelSize(0, defaultValue)
     array.recycle()
     return dimension
 }
 
-fun Context.resolveDrawableAttr(@AttrRes attr: Int): Drawable? = resolveDrawableAttr(attr, null)
+inline fun Context.resolveDrawableAttr(@AttrRes attr: Int): Drawable? = resolveDrawableAttr(attr, null)
 
-fun Context.resolveDrawableAttr(@AttrRes attr: Int, defaultValue: Drawable?): Drawable? {
+inline fun Context.resolveDrawableAttr(@AttrRes attr: Int, defaultValue: Drawable?): Drawable? {
     val array = getTypedArrayWithAttributes(attr)
     val drawable = array.getDrawable(0)
     array.recycle()
     return drawable ?: defaultValue
 }
 
-fun Context.resolveFloatAttr(@AttrRes attr: Int): Float = resolveFloatAttr(attr, -1f)
+inline fun Context.resolveFloatAttr(@AttrRes attr: Int): Float = resolveFloatAttr(attr, -1f)
 
-fun Context.resolveFloatAttr(@AttrRes attr: Int, defaultValue: Float): Float {
+inline fun Context.resolveFloatAttr(@AttrRes attr: Int, defaultValue: Float): Float {
     val array = getTypedArrayWithAttributes(attr)
     val floatValue = array.getFloat(0, defaultValue)
     array.recycle()
     return floatValue
 }
 
-fun Context.resolveFontAttr(@AttrRes attr: Int): Typeface? = resolveFontAttr(attr, null)
+inline fun Context.resolveFontAttr(@AttrRes attr: Int): Typeface? = resolveFontAttr(attr, null)
 
 @TargetApi(Build.VERSION_CODES.O)
-fun Context.resolveFontAttr(@AttrRes attr: Int, defaultValue: Typeface?): Typeface? {
+inline fun Context.resolveFontAttr(@AttrRes attr: Int, defaultValue: Typeface?): Typeface? {
     val array = getTypedArrayWithAttributes(attr)
     val font = array.getFont(0)
     array.recycle()
     return font ?: defaultValue
 }
 
-fun Context.resolveIntAttr(@AttrRes attr: Int): Int = resolveIntAttr(attr, -1)
+inline fun Context.resolveIntAttr(@AttrRes attr: Int): Int = resolveIntAttr(attr, -1)
 
-fun Context.resolveIntAttr(@AttrRes attr: Int, defaultValue: Int): Int {
+inline fun Context.resolveIntAttr(@AttrRes attr: Int, defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val intValue = array.getInt(0, defaultValue)
     array.recycle()
     return intValue
 }
 
-fun Context.resolveIntegerAttr(@AttrRes attr: Int): Int = resolveIntegerAttr(attr, -1)
+inline fun Context.resolveIntegerAttr(@AttrRes attr: Int): Int = resolveIntegerAttr(attr, -1)
 
-fun Context.resolveIntegerAttr(@AttrRes attr: Int, defaultValue: Int?): Int {
+inline fun Context.resolveIntegerAttr(@AttrRes attr: Int, defaultValue: Int?): Int {
     val array = getTypedArrayWithAttributes(attr)
     val integer = array.getInteger(0, defaultValue!!)
     array.recycle()
     return integer
 }
 
-fun Context.resolveStringAttr(@AttrRes attr: Int): String? = resolveStringAttr(attr, null)
+inline fun Context.resolveStringAttr(@AttrRes attr: Int): String? = resolveStringAttr(attr, null)
 
-fun Context.resolveStringAttr(@AttrRes attr: Int, defaultValue: String?): String? {
+inline fun Context.resolveStringAttr(@AttrRes attr: Int, defaultValue: String?): String? {
     val array = getTypedArrayWithAttributes(attr)
     val string = array.getString(0)
     array.recycle()
     return string ?: defaultValue
 }
 
-fun Context.resolveTextAttr(@AttrRes attr: Int): CharSequence? = resolveStringAttr(attr, null)
+inline fun Context.resolveTextAttr(@AttrRes attr: Int): CharSequence? = resolveStringAttr(attr, null)
 
-fun Context.resolveTextAttr(@AttrRes attr: Int, defaultValue: CharSequence?): CharSequence? {
+inline fun Context.resolveTextAttr(@AttrRes attr: Int, defaultValue: CharSequence?): CharSequence? {
     val array = getTypedArrayWithAttributes(attr)
     val charSequence = array.getText(0)
     array.recycle()
     return charSequence ?: defaultValue
 }
 
-fun Context.resolveTextArrayAttr(@AttrRes attr: Int): Array<CharSequence>? =
+inline fun Context.resolveTextArrayAttr(@AttrRes attr: Int): Array<CharSequence>? =
         resolveTextArrayAttr(attr, null)
 
-fun Context.resolveTextArrayAttr(@AttrRes attr: Int,
+inline fun Context.resolveTextArrayAttr(@AttrRes attr: Int,
                                  defaultValue: Array<CharSequence>?): Array<CharSequence>? {
     val array = getTypedArrayWithAttributes(attr)
     val charSequence = array.getTextArray(0)
     array.recycle()
     return charSequence ?: defaultValue
 }
-
-private fun Context.getTypedArrayWithAttributes(vararg attr: Int): TypedArray =
+ 
+inline fun Context.getTypedArrayWithAttributes(vararg attr: Int): TypedArray =
         theme.obtainStyledAttributes(attr)

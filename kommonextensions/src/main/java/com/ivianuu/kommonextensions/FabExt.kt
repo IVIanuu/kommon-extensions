@@ -18,7 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.support.design.widget.FloatingActionButton
 
-fun FloatingActionButton.show(show: Boolean) {
+inline fun FloatingActionButton.show(show: Boolean) {
     if (show) {
         show()
     } else{

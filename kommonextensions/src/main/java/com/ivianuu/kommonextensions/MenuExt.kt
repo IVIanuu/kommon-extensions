@@ -21,28 +21,28 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
-fun Menu.find(id: Int): MenuItem = findItem(id)!!
-fun Menu.findNullable(id: Int): MenuItem? = findItem(id)
+inline fun Menu.find(id: Int): MenuItem = findItem(id)!!
+inline fun Menu.findNullable(id: Int): MenuItem? = findItem(id)
 
-fun Menu.first(): MenuItem  = this[0]
-fun Menu.firstOrNull(): MenuItem?  = if (isEmpty()) null else first()
-fun Menu.last(): MenuItem  = this[lastIndex()]
-fun Menu.lastOrNull(): MenuItem?  = if (isEmpty()) null else last()
+inline fun Menu.first(): MenuItem  = this[0]
+inline fun Menu.firstOrNull(): MenuItem?  = if (isEmpty()) null else first()
+inline fun Menu.last(): MenuItem  = this[lastIndex()]
+inline fun Menu.lastOrNull(): MenuItem?  = if (isEmpty()) null else last()
 
-fun Menu.isEmpty(): Boolean = size() == 0
-fun Menu.isNotEmpty() = !isEmpty()
+inline fun Menu.isEmpty(): Boolean = size() == 0
+inline fun Menu.isNotEmpty() = !isEmpty()
 
-fun Menu.lastIndex(): Int = size() - 1
+inline fun Menu.lastIndex(): Int = size() - 1
 
-fun Menu.forEach(action: (MenuItem) -> Unit) = items().forEach(action)
-fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items().forEachIndexed(action)
+inline fun Menu.forEach(action: (MenuItem) -> Unit) = items().forEach(action)
+inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items().forEachIndexed(action)
 
-operator fun Menu.get(index: Int) = getItem(index)
+operator inline fun Menu.get(index: Int) = getItem(index)
 
-fun Menu.getOrNull(index: Int): MenuItem? = if (index in 0..lastIndex()) getItem(index) else null
+inline fun Menu.getOrNull(index: Int): MenuItem? = if (index in 0..lastIndex()) getItem(index) else null
 
-operator fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
+operator inline fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
 
-operator fun Menu.contains(item: MenuItem) = get(item) != -1
+operator inline fun Menu.contains(item: MenuItem) = get(item) != -1
 
-fun Menu.items(): List<MenuItem> = (0 until size()).map { get(it) }
+inline fun Menu.items(): List<MenuItem> = (0 until size()).map { get(it) }

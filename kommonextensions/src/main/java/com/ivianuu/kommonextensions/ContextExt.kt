@@ -60,36 +60,36 @@ inline fun <reified T : Any> Context.createIntent(initializer: Intent.() -> Unit
 
 // RESOURCES
 
-fun Context.getResAnim(@AnimRes resId: Int) : Animation = AnimationUtils.loadAnimation(this, resId)
+inline fun Context.getResAnim(@AnimRes resId: Int) : Animation = AnimationUtils.loadAnimation(this, resId)
 
-fun Context.getResIntArray(@ArrayRes resId: Int) : IntArray = resources.getIntArray(resId)
+inline fun Context.getResIntArray(@ArrayRes resId: Int) : IntArray = resources.getIntArray(resId)
 
-fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> =
+inline fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> =
         resources.getStringArray(resId)
 
-fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> =
+inline fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> =
         resources.getTextArray(resId)
 
 /**
  * Returns the typed array for this resource
  */
-fun Context.getResTypedArray(@ArrayRes resId: Int) : TypedArray = resources.obtainTypedArray(resId)
+inline fun Context.getResTypedArray(@ArrayRes resId: Int) : TypedArray = resources.obtainTypedArray(resId)
 
 /**
  * Returns the boolean for this resource
  */
-fun Context.getResBool(@BoolRes resId: Int) : Boolean = resources.getBoolean(resId)
+inline fun Context.getResBool(@BoolRes resId: Int) : Boolean = resources.getBoolean(resId)
 
 /**
  * Returns the dimen for this resource
  */
 @Px
-fun Context.getResDimen(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelSize(resId)
+inline fun Context.getResDimen(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelSize(resId)
 
 /**
  * Returns the float for this resource
  */
-fun Context.getResFloat(@DimenRes resId: Int) : Float {
+inline fun Context.getResFloat(@DimenRes resId: Int) : Float {
     val value = VALUE
     resources.getValue(resId, value, true)
     return value.float
@@ -98,48 +98,48 @@ fun Context.getResFloat(@DimenRes resId: Int) : Float {
 /**
  * Returns the int for this resource
  */
-fun Context.getResInt(@IntegerRes resId: Int) : Int = resources.getInteger(resId)
+inline fun Context.getResInt(@IntegerRes resId: Int) : Int = resources.getInteger(resId)
 
 /**
  * Returns the vector drawable for this resource
  */
-fun Context.getResVectorDrawable(@DrawableRes resId: Int): Drawable =
+inline fun Context.getResVectorDrawable(@DrawableRes resId: Int): Drawable =
         VectorDrawableCompat.create(this.resources, resId, this.theme) as Drawable
 
 /**
  * Returns the bitmap for this resource
  */
-fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawable(resId).toBitmap()
+inline fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawable(resId).toBitmap()
 
 /**
  * Returns the color for this resource
  */
 @ColorInt
-fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
+inline fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 
 /**
  * Returns the color state list for this resource
  */
-fun Context.getResColorStateList(resId: Int) : ColorStateList =
+inline fun Context.getResColorStateList(resId: Int) : ColorStateList =
         ContextCompat.getColorStateList(this, resId)
 
 /**
  * Returns the drawable for this resource
  */
-fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable =
+inline fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable =
         ContextCompat.getDrawable(this, resId)
 
 /**
  * Returns the font for this resource
  */
-fun Context.getResFont(@FontRes resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
+inline fun Context.getResFont(@FontRes resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
 
 // TINTED DRAWABLES
 
 /**
  * Returns the tinted drawable
  */
-fun Context.createTintedDrawable(@DrawableRes drawableRes: Int,
+inline fun Context.createTintedDrawable(@DrawableRes drawableRes: Int,
                                  @ColorInt color: Int,
                                  mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
     val drawable = getResDrawable(drawableRes)
@@ -151,7 +151,7 @@ fun Context.createTintedDrawable(@DrawableRes drawableRes: Int,
 /**
  * Returns the tinted vector drawable
  */
-fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
+inline fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
                                        @ColorInt color: Int,
                                        mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
     val drawable = getResVectorDrawable(drawableRes)
@@ -160,7 +160,7 @@ fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
     return drawable
 }
 
-private object ValueHolder {
+object ValueHolder {
     val VALUE = TypedValue()
 }
 
@@ -169,12 +169,12 @@ private object ValueHolder {
 /**
  * Returns whether is portrait
  */
-fun Context.isPortrait(): Boolean = !isLandscape()
+inline fun Context.isPortrait(): Boolean = !isLandscape()
 
 /**
  * Returns whether is landscape
  */
-fun Context.isLandscape(): Boolean {
+inline fun Context.isLandscape(): Boolean {
     val rotation = getRotation()
     return rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270
 }
@@ -182,15 +182,15 @@ fun Context.isLandscape(): Boolean {
 /**
  * Returns the current rotation
  */
-fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
+inline fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
 
-private val metrics = DisplayMetrics()
+val metrics = DisplayMetrics()
 
 /**
  * Returns the screen height
  */
 @Px
-fun Context.getScreenHeight(): Int {
+inline fun Context.getScreenHeight(): Int {
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.heightPixels
 }
@@ -199,7 +199,7 @@ fun Context.getScreenHeight(): Int {
  * Returns the screen width
  */
 @Px
-fun Context.getScreenWidth(): Int {
+inline fun Context.getScreenWidth(): Int {
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.widthPixels
 }
@@ -209,7 +209,7 @@ fun Context.getScreenWidth(): Int {
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
-fun Context.getRealScreenHeight(): Int {
+inline fun Context.getRealScreenHeight(): Int {
     windowManager.defaultDisplay.getRealMetrics(metrics)
     return metrics.heightPixels
 }
@@ -219,7 +219,7 @@ fun Context.getRealScreenHeight(): Int {
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
-fun Context.getRealScreenWidth(): Int {
+inline fun Context.getRealScreenWidth(): Int {
     windowManager.defaultDisplay.getRealMetrics(metrics)
     return metrics.widthPixels
 }
@@ -228,13 +228,13 @@ fun Context.getRealScreenWidth(): Int {
 /**
  * Returns whether is tablet
  */
-fun Context.isTablet(): Boolean =
+inline fun Context.isTablet(): Boolean =
         resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_LARGE
 
 /**
  * Returns whether has navigation bar
  */
-fun Context.hasNavigationBar(): Boolean {
+inline fun Context.hasNavigationBar(): Boolean {
     val id = resources.getIdentifier("config_showNavigationBar", "bool", "android")
     return id > 0 && resources.getBoolean(id)
 }
@@ -245,7 +245,7 @@ fun Context.hasNavigationBar(): Boolean {
  * Returns whether the device is connected
  */
 @SuppressLint("MissingPermission")
-fun Context.isConnected(): Boolean {
+inline fun Context.isConnected(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false
 }
@@ -254,7 +254,7 @@ fun Context.isConnected(): Boolean {
  * Returns whether connected to wifi
  */
 @SuppressLint("MissingPermission")
-fun Context.isConnectedWifi(): Boolean {
+inline fun Context.isConnectedWifi(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false && info?.type == ConnectivityManager.TYPE_WIFI
 }
@@ -263,7 +263,7 @@ fun Context.isConnectedWifi(): Boolean {
  * Returns whether connected to mobile
  */
 @SuppressLint("MissingPermission")
-fun Context.isConnectedMobile(): Boolean {
+inline fun Context.isConnectedMobile(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false && info?.type == ConnectivityManager.TYPE_MOBILE
 }
@@ -274,7 +274,7 @@ fun Context.isConnectedMobile(): Boolean {
 /**
  * Returns whether the screen is on
  */
-fun Context.isScreenOn(): Boolean {
+inline fun Context.isScreenOn(): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         powerManager.isInteractive
     } else {
@@ -285,7 +285,7 @@ fun Context.isScreenOn(): Boolean {
 /**
  * Returns whether the device is charging
  */
-fun Context.isCharging(): Boolean {
+inline fun Context.isCharging(): Boolean {
     val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
     val intent = registerReceiver(null, intentFilter) ?: return false
 
@@ -299,7 +299,7 @@ fun Context.isCharging(): Boolean {
  * Returns the current battery level
  * Or -1 if we cannot get the battery level
  */
-fun Context.getBatteryLevel(): Int {
+inline fun Context.getBatteryLevel(): Int {
     val batteryIntent = registerReceiver(null,
             IntentFilter(Intent.ACTION_BATTERY_CHANGED)) ?: return -1
     val level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)

@@ -64,154 +64,154 @@ import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
 
-val Context.accessibilityManager get() = getSystemService(
+inline val Context.accessibilityManager get() = getSystemService(
         Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
 
-val Context.accountManager get() = getSystemService(Context.ACCOUNT_SERVICE) as AccountManager
+inline val Context.accountManager get() = getSystemService(Context.ACCOUNT_SERVICE) as AccountManager
 
-val Context.activityManager get() = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+inline val Context.activityManager get() = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 
-val Context.alarmManager get() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+inline val Context.alarmManager get() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-val Context.audioManager get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+inline val Context.audioManager get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-val Context.clipboardManager get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+inline val Context.clipboardManager get() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-val Context.connectivityManager get() = getSystemService(
+inline val Context.connectivityManager get() = getSystemService(
         Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-val Context.keyguardManager get() = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+inline val Context.keyguardManager get() = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
 
-val Context.layoutInflater get() = getSystemService(
+inline val Context.layoutInflater get() = getSystemService(
         Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-val Context.locationManager get() = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+inline val Context.locationManager get() = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-val Context.notificationManager get() = getSystemService(
+inline val Context.notificationManager get() = getSystemService(
         Context.NOTIFICATION_SERVICE) as NotificationManager
 
-val Context.powerManager get() = getSystemService(Context.POWER_SERVICE) as PowerManager
+inline val Context.powerManager get() = getSystemService(Context.POWER_SERVICE) as PowerManager
 
-val Context.searchManager get() = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+inline val Context.searchManager get() = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-val Context.sensorManager get() = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+inline val Context.sensorManager get() = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-val Context.telephonyManager get() = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+inline val Context.telephonyManager get() = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
-val Context.vibrator get() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+inline val Context.vibrator get() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-val Context.wallpaperManager get() = getSystemService(Context.WALLPAPER_SERVICE) as WallpaperManager
+inline val Context.wallpaperManager get() = getSystemService(Context.WALLPAPER_SERVICE) as WallpaperManager
 
-val Context.wifiManager
+inline val Context.wifiManager
     @SuppressLint("WifiManagerLeak")
     get() = getSystemService(Context.WIFI_SERVICE) as WifiManager
 
-val Context.windowManager get() = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+inline val Context.windowManager get() = getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
-val Context.inputMethodManager get() = getSystemService(
+inline val Context.inputMethodManager get() = getSystemService(
         Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-val Context.devicePolicyManager get() = getSystemService(
+inline val Context.devicePolicyManager get() = getSystemService(
         Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
-val Context.dropBoxManager get() = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
+inline val Context.dropBoxManager get() = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
 
-val Context.uiModeManager get() = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+inline val Context.uiModeManager get() = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
 
-val Context.downloadManager get() = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+inline val Context.downloadManager get() = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
-val Context.storageManager get() = getSystemService(Context.STORAGE_SERVICE) as StorageManager
+inline val Context.storageManager get() = getSystemService(Context.STORAGE_SERVICE) as StorageManager
 
-val Context.nfcManager get() = getSystemService(Context.NFC_SERVICE) as NfcManager
+inline val Context.nfcManager get() = getSystemService(Context.NFC_SERVICE) as NfcManager
 
-val Context.usbManager get() = getSystemService(Context.USB_SERVICE) as UsbManager
+inline val Context.usbManager get() = getSystemService(Context.USB_SERVICE) as UsbManager
 
-val Context.textServicesManager get() = getSystemService(
+inline val Context.textServicesManager get() = getSystemService(
         Context.TEXT_SERVICES_MANAGER_SERVICE) as TextServicesManager
 
-val Context.wifiP2pManager get() = getSystemService(Context.WIFI_P2P_SERVICE) as WifiP2pManager
+inline val Context.wifiP2pManager get() = getSystemService(Context.WIFI_P2P_SERVICE) as WifiP2pManager
 
-val Context.inputManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+inline val Context.inputManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 get() = getSystemService(Context.INPUT_SERVICE) as InputManager
 
-val Context.mediaRouter @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+inline val Context.mediaRouter @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 get() = getSystemService(Context.MEDIA_ROUTER_SERVICE) as MediaRouter
 
-val Context.nsdManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+inline val Context.nsdManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 get() = getSystemService(Context.NSD_SERVICE) as NsdManager
 
-val Context.displayManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+inline val Context.displayManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 get() = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
 
-val Context.userManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+inline val Context.userManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 get() = getSystemService(Context.USER_SERVICE) as UserManager
 
-val Context.bluetoothManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+inline val Context.bluetoothManager @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 get() = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
 
-val Context.appOpsManager @TargetApi(Build.VERSION_CODES.KITKAT)
+inline val Context.appOpsManager @TargetApi(Build.VERSION_CODES.KITKAT)
 get() = getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
 
-val Context.captioningManager @TargetApi(Build.VERSION_CODES.KITKAT)
+inline val Context.captioningManager @TargetApi(Build.VERSION_CODES.KITKAT)
 get() = getSystemService(Context.CAPTIONING_SERVICE) as CaptioningManager
 
-val Context.consumerIrManager @TargetApi(Build.VERSION_CODES.KITKAT)
+inline val Context.consumerIrManager @TargetApi(Build.VERSION_CODES.KITKAT)
 get() = getSystemService(Context.CONSUMER_IR_SERVICE) as ConsumerIrManager
 
-val Context.printManager @TargetApi(Build.VERSION_CODES.KITKAT)
+inline val Context.printManager @TargetApi(Build.VERSION_CODES.KITKAT)
 get() = getSystemService(Context.PRINT_SERVICE) as PrintManager
 
-val Context.appWidgetManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.appWidgetManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.APPWIDGET_SERVICE) as AppWidgetManager
 
-val Context.batteryManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.batteryManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
 
-val Context.cameraManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.cameraManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.CAMERA_SERVICE) as CameraManager
 
-val Context.jobScheduler @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.jobScheduler @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
 
-val Context.launcherApps @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.launcherApps @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
 
-val Context.mediaProjectionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.mediaProjectionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
 
-val Context.mediaSessionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.mediaSessionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.MEDIA_SESSION_SERVICE) as MediaSessionManager
 
-val Context.restrictionsManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.restrictionsManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.RESTRICTIONS_SERVICE) as RestrictionsManager
 
-val Context.telecomManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.telecomManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.TELECOM_SERVICE) as TelecomManager
 
-val Context.tvInputManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+inline val Context.tvInputManager @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 get() = getSystemService(Context.TV_INPUT_SERVICE) as TvInputManager
 
-val Context.subscriptionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
+inline val Context.subscriptionManager @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
 get() = getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
 
-val Context.usageStatsManager @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
+inline val Context.usageStatsManager @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
 get() = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
 
-val Context.carrierConfigManager @TargetApi(Build.VERSION_CODES.M)
+inline val Context.carrierConfigManager @TargetApi(Build.VERSION_CODES.M)
 get() = getSystemService(Context.CARRIER_CONFIG_SERVICE) as CarrierConfigManager
 
-val Context.fingerprintManager
+inline val Context.fingerprintManager
     @TargetApi(Build.VERSION_CODES.M)
     get() = getSystemService(Context.FINGERPRINT_SERVICE) as FingerprintManager
 
-val Context.midiManager
+inline val Context.midiManager
     @TargetApi(Build.VERSION_CODES.M)
     get() = getSystemService(Context.MIDI_SERVICE) as MidiManager
 
-val Context.networkStatsManager
+inline val Context.networkStatsManager
     @TargetApi(Build.VERSION_CODES.M)
     get() = getSystemService(Context.NETWORK_STATS_SERVICE) as NetworkStatsManager
 
-val Context.shortcutManager
+inline val Context.shortcutManager
     @TargetApi(Build.VERSION_CODES.N_MR1)
     get() = getSystemService(Context.SHORTCUT_SERVICE) as ShortcutManager

@@ -20,28 +20,28 @@ import android.os.Bundle
 import android.os.Parcelable
 import java.io.Serializable
 
-fun bundleOf(key: String, value: Boolean): Bundle = Bundle().apply { putBoolean(key, value) }
-fun bundleOf(key: String, value: Byte): Bundle = Bundle().apply { putByte(key, value) }
-fun bundleOf(key: String, value: Char): Bundle = Bundle().apply { putChar(key, value) }
-fun bundleOf(key: String, value: Short): Bundle = Bundle().apply { putShort(key, value) }
-fun bundleOf(key: String, value: Int): Bundle = Bundle().apply { putInt(key, value) }
-fun bundleOf(key: String, value: Long): Bundle = Bundle().apply { putLong(key, value) }
-fun bundleOf(key: String, value: Float): Bundle = Bundle().apply { putFloat(key, value) }
-fun bundleOf(key: String, value: Double): Bundle = Bundle().apply { putDouble(key, value) }
-fun bundleOf(key: String, value: String): Bundle = Bundle().apply { putString(key, value) }
-fun bundleOf(key: String, value: CharSequence): Bundle = Bundle().apply { putCharSequence(key, value) }
-fun bundleOf(key: String, value: Parcelable): Bundle = Bundle().apply { putParcelable(key, value) }
-fun bundleOf(key: String, value: java.io.Serializable): Bundle = Bundle().apply { putSerializable(key, value) }
-fun bundleOf(key: String, value: BooleanArray): Bundle = Bundle().apply { putBooleanArray(key, value) }
-fun bundleOf(key: String, value: ByteArray): Bundle = Bundle().apply { putByteArray(key, value) }
-fun bundleOf(key: String, value: CharArray): Bundle = Bundle().apply { putCharArray(key, value) }
-fun bundleOf(key: String, value: DoubleArray): Bundle = Bundle().apply { putDoubleArray(key, value) }
-fun bundleOf(key: String, value: FloatArray): Bundle = Bundle().apply { putFloatArray(key, value) }
-fun bundleOf(key: String, value: IntArray): Bundle = Bundle().apply { putIntArray(key, value) }
-fun bundleOf(key: String, value: LongArray): Bundle = Bundle().apply { putLongArray(key, value) }
-fun bundleOf(key: String, value: ShortArray): Bundle = Bundle().apply { putShortArray(key, value) }
-fun bundleOf(key: String, value: Bundle): Bundle = Bundle().apply { putBundle(key, value) }
-fun bundleOf(key: String, value: Array<*>): Bundle {
+inline fun bundleOf(key: String, value: Boolean): Bundle = Bundle().apply { putBoolean(key, value) }
+inline fun bundleOf(key: String, value: Byte): Bundle = Bundle().apply { putByte(key, value) }
+inline fun bundleOf(key: String, value: Char): Bundle = Bundle().apply { putChar(key, value) }
+inline fun bundleOf(key: String, value: Short): Bundle = Bundle().apply { putShort(key, value) }
+inline fun bundleOf(key: String, value: Int): Bundle = Bundle().apply { putInt(key, value) }
+inline fun bundleOf(key: String, value: Long): Bundle = Bundle().apply { putLong(key, value) }
+inline fun bundleOf(key: String, value: Float): Bundle = Bundle().apply { putFloat(key, value) }
+inline fun bundleOf(key: String, value: Double): Bundle = Bundle().apply { putDouble(key, value) }
+inline fun bundleOf(key: String, value: String): Bundle = Bundle().apply { putString(key, value) }
+inline fun bundleOf(key: String, value: CharSequence): Bundle = Bundle().apply { putCharSequence(key, value) }
+inline fun bundleOf(key: String, value: Parcelable): Bundle = Bundle().apply { putParcelable(key, value) }
+inline fun bundleOf(key: String, value: java.io.Serializable): Bundle = Bundle().apply { putSerializable(key, value) }
+inline fun bundleOf(key: String, value: BooleanArray): Bundle = Bundle().apply { putBooleanArray(key, value) }
+inline fun bundleOf(key: String, value: ByteArray): Bundle = Bundle().apply { putByteArray(key, value) }
+inline fun bundleOf(key: String, value: CharArray): Bundle = Bundle().apply { putCharArray(key, value) }
+inline fun bundleOf(key: String, value: DoubleArray): Bundle = Bundle().apply { putDoubleArray(key, value) }
+inline fun bundleOf(key: String, value: FloatArray): Bundle = Bundle().apply { putFloatArray(key, value) }
+inline fun bundleOf(key: String, value: IntArray): Bundle = Bundle().apply { putIntArray(key, value) }
+inline fun bundleOf(key: String, value: LongArray): Bundle = Bundle().apply { putLongArray(key, value) }
+inline fun bundleOf(key: String, value: ShortArray): Bundle = Bundle().apply { putShortArray(key, value) }
+inline fun bundleOf(key: String, value: Bundle): Bundle = Bundle().apply { putBundle(key, value) }
+inline fun bundleOf(key: String, value: Array<*>): Bundle {
     val bundle = Bundle()
     @Suppress("UNCHECKED_CAST") when {
         value.isArrayOf<Parcelable>() -> bundle.putParcelableArray(key, value as Array<out Parcelable>)
@@ -52,7 +52,7 @@ fun bundleOf(key: String, value: Array<*>): Bundle {
     return bundle
 }
 
-fun bundleOf(vararg pairs: Pair<String, Any?>): Bundle = when {
+inline fun bundleOf(vararg pairs: Pair<String, Any?>): Bundle = when {
     pairs.isEmpty() -> Bundle.EMPTY
     else -> {
         val bundle = Bundle()

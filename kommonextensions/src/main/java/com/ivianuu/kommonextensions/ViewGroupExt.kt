@@ -23,31 +23,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-fun <V : View> ViewGroup.inflate(@LayoutRes res: Int, attachToThis: Boolean = false)
+inline fun <V : View> ViewGroup.inflate(@LayoutRes res: Int, attachToThis: Boolean = false)
         = LayoutInflater.from(context).inflate(res, this, attachToThis) as V
 
-operator fun ViewGroup.get(index: Int) = getChildAt(index)
+operator inline fun ViewGroup.get(index: Int) = getChildAt(index)
 
-fun ViewGroup.getOrNull(index: Int): View? = if (index in 0..lastIndex()) getChildAt(index) else null
+inline fun ViewGroup.getOrNull(index: Int): View? = if (index in 0..lastIndex()) getChildAt(index) else null
 
-operator fun ViewGroup.get(child: View) = indexOfChild(child)
+operator inline fun ViewGroup.get(child: View) = indexOfChild(child)
 
-operator fun ViewGroup.plusAssign(child: View) = addView(child)
+operator inline fun ViewGroup.plusAssign(child: View) = addView(child)
 
-operator fun ViewGroup.minusAssign(child: View) = removeView(child)
+operator inline fun ViewGroup.minusAssign(child: View) = removeView(child)
 
-operator fun ViewGroup.contains(child: View) = get(child) != -1
+operator inline fun ViewGroup.contains(child: View) = get(child) != -1
 
-fun ViewGroup.childs(): List<View> = (0 until childCount).map { getChildAt(it) }
+inline fun ViewGroup.childs(): List<View> = (0 until childCount).map { getChildAt(it) }
 
-fun ViewGroup.firstChild(): View = this[0]
-fun ViewGroup.firstChildOrNull(): View? = if (isEmpty()) null else firstChild()
-fun ViewGroup.lastChild(): View = this[lastIndex()]
-fun ViewGroup.lastChildOrNull(): View? = if (isEmpty()) null else lastChild()
+inline fun ViewGroup.firstChild(): View = this[0]
+inline fun ViewGroup.firstChildOrNull(): View? = if (isEmpty()) null else firstChild()
+inline fun ViewGroup.lastChild(): View = this[lastIndex()]
+inline fun ViewGroup.lastChildOrNull(): View? = if (isEmpty()) null else lastChild()
 
-fun ViewGroup.isEmpty() = childCount == 0
-fun ViewGroup.isNotEmpty() = !isEmpty()
-fun ViewGroup.lastIndex() = childCount - 1
+inline fun ViewGroup.isEmpty() = childCount == 0
+inline fun ViewGroup.isNotEmpty() = !isEmpty()
+inline fun ViewGroup.lastIndex() = childCount - 1
 
 inline fun ViewGroup.forEachChild(action: (View) -> Unit) = childs().forEach(action)
 inline fun ViewGroup.forEachChildIndexed(action: (Int, View) -> Unit) = childs().forEachIndexed(action)

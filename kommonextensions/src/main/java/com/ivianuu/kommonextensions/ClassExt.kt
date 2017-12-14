@@ -16,8 +16,8 @@
 
 package com.ivianuu.kommonextensions
 
-fun Any.className(): String = this::class.java.name
+inline fun Any.className(): String = this::class.java.name
 
-fun Any.classSimpleName(): String = this::class.java.simpleName
+inline fun Any.classSimpleName(): String = this::class.java.simpleName
 
-fun Any.classCanonicalName(): String = this::class.java.canonicalName
+inline fun Any.classCanonicalName(): String = this::class.java.canonicalName

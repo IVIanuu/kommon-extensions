@@ -16,15 +16,4 @@
 
 package com.ivianuu.kommonextensions
 
-import android.app.Dialog
-import android.app.Fragment
-import android.content.Context
-import android.content.Intent
-
-inline fun Intent.isResolvable(context: Context): Boolean = resolveActivity(context.packageManager) != null
-
-inline fun Intent.isResolvable(fragment: Fragment): Boolean = resolveActivity(fragment.activity.packageManager) != null
-
-inline fun Intent.isResolvable(fragment: android.support.v4.app.Fragment): Boolean = resolveActivity(fragment.activity.packageManager) != null
-
-inline fun Intent.isResolvable(dialog: Dialog): Boolean = resolveActivity(dialog.context.packageManager) != null
+inline fun timestamp(): Long = System.currentTimeMillis()

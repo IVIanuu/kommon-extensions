@@ -18,11 +18,13 @@ package com.ivianuu.kommonextensions
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.support.v4.app.ActivityCompat
 import android.view.View
 import android.widget.EditText
 
-val Activity.contentView: View
+inline val Activity.contentView: View
     get() = findViewById(android.R.id.content)
 
 // START ACTIVITY
@@ -40,30 +42,43 @@ inline fun <reified T : Activity> Activity.startActivity(initializer: Intent.() 
 
 // KEYBOARD
 
-fun Activity.hideInputMethod() {
+inline fun Activity.hideInputMethod() {
     inputMethodManager.hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
 }
 
-fun Activity.showInputMethod(v: EditText) {
+inline fun Activity.showInputMethod(v: EditText) {
     inputMethodManager.showSoftInput(v, 0)
 }
 
 // FINISHING
 
-fun Activity.finishWithoutTransition() {
+inline fun Activity.finishWithoutTransition() {
     overridePendingTransition(0, 0)
     finish()
 }
 
-fun Activity.supportFinishAfterTransition() {
+inline fun Activity.supportFinishAfterTransition() {
     ActivityCompat.finishAfterTransition(this)
 }
 
-fun Activity.supportFinishAffinity() {
+inline fun Activity.supportFinishAffinity() {
     ActivityCompat.finishAffinity(this)
 }
 
 inline fun Activity.finishWithResult(resultCode: Int, data: Intent) {
     setResult(resultCode, data)
     finish()
+}
+
+// LOCK ORIENTATION
+
+inline fun Activity.lockCurrentScreenOrientation(orientation: Int = resources.configuration.orientation) {
+    requestedOrientation = when (orientation) {
+        Configuration.ORIENTATION_LANDSCAPE -> ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        else -> ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+    }
+}
+
+inline fun Activity.unlockScreenOrientation() {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
 }
