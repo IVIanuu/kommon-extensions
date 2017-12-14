@@ -60,10 +60,10 @@ inline fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
 }
 
 @Dimension
-inline fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float = resolveDimensionAttr(attr, -1f)
+inline fun Context.resolveDimenAttr(@AttrRes attr: Int): Float = resolveDimenAttr(attr, -1f)
 
 @Dimension
-inline fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Float): Float {
+inline fun Context.resolveDimenAttr(@AttrRes attr: Int, @Dimension defaultValue: Float): Float {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimension(0, defaultValue)
     array.recycle()
@@ -71,11 +71,11 @@ inline fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultVa
 }
 
 @Px
-inline fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int =
-        resolveDimensionPixelOffsetAttr(attr, -1)
+inline fun Context.resolveDimenPxOffsetAttr(@AttrRes attr: Int): Int =
+        resolveDimenPxOffsetAttr(attr, -1)
 
 @Px
-inline fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
+inline fun Context.resolveDimenPxOffsetAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimensionPixelOffset(0, defaultValue)
     array.recycle()
@@ -83,11 +83,11 @@ inline fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defau
 }
 
 @Px
-inline fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int =
-        resolveDimensionPixelSizeAttr(attr, -1)
+inline fun Context.resolveDimenPxAttr(@AttrRes attr: Int): Int =
+        resolveDimenPxAttr(attr, -1)
 
 @Px
-inline fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
+inline fun Context.resolveDimenPxAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val dimension = array.getDimensionPixelSize(0, defaultValue)
     array.recycle()

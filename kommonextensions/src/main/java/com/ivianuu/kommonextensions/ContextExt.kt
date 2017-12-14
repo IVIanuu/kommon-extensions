@@ -44,14 +44,8 @@ import com.ivianuu.kommonextensions.ValueHolder.VALUE
 
 // INTENTS
 
-/**
- * Returns the intent for the component
- */
 inline fun <reified T : Any> Context.createIntent() = Intent(this, T::class.java)
 
-/**
- * Returns the intent for the component and calls the initializer
- */
 inline fun <reified T : Any> Context.createIntent(initializer: Intent.() -> Unit): Intent {
     val intent = createIntent<T>()
     initializer(intent)
@@ -70,50 +64,31 @@ inline fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> =
 inline fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> =
         resources.getTextArray(resId)
 
-/**
- * Returns the typed array for this resource
- */
 inline fun Context.getResTypedArray(@ArrayRes resId: Int) : TypedArray = resources.obtainTypedArray(resId)
 
-/**
- * Returns the boolean for this resource
- */
 inline fun Context.getResBool(@BoolRes resId: Int) : Boolean = resources.getBoolean(resId)
 
-/**
- * Returns the dimen for this resource
- */
-@Px
-inline fun Context.getResDimen(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelSize(resId)
+inline fun Context.getResDimen(@DimenRes resId : Int) : Float = this.resources.getDimension(resId)
 
-/**
- * Returns the float for this resource
- */
+@Px
+inline fun Context.getResDimenPx(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelSize(resId)
+
+@Px
+inline fun Context.getResDimenPxOffset(@DimenRes resId : Int) : Int = this.resources.getDimensionPixelOffset(resId)
+
 inline fun Context.getResFloat(@DimenRes resId: Int) : Float {
     val value = VALUE
     resources.getValue(resId, value, true)
     return value.float
 }
 
-/**
- * Returns the int for this resource
- */
 inline fun Context.getResInt(@IntegerRes resId: Int) : Int = resources.getInteger(resId)
 
-/**
- * Returns the vector drawable for this resource
- */
 inline fun Context.getResVectorDrawable(@DrawableRes resId: Int): Drawable =
         VectorDrawableCompat.create(this.resources, resId, this.theme) as Drawable
 
-/**
- * Returns the bitmap for this resource
- */
 inline fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawable(resId).toBitmap()
 
-/**
- * Returns the color for this resource
- */
 @ColorInt
 inline fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 
