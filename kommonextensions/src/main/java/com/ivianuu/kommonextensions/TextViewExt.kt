@@ -23,9 +23,6 @@ import android.widget.TextView
 
 // COMPOUND DRAWABLES
 
-/**
- * The left compound drawable
- */
 var TextView.compoundDrawableLeft: Drawable?
     get() {
         return if (compoundDrawables.isEmpty()) {
@@ -38,9 +35,6 @@ var TextView.compoundDrawableLeft: Drawable?
         setOptionalCompoundDrawables(left = value)
     }
 
-/**
- * The start compound drawable
- */
 var TextView.compoundDrawableStart: Drawable?
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() {
@@ -55,9 +49,6 @@ var TextView.compoundDrawableStart: Drawable?
         setOptionalRelativeCompoundDrawables(start = value)
     }
 
-/**
- * The top compound drawable
- */
 var TextView.compoundDrawableTop: Drawable?
     get() {
         return if (compoundDrawables.isEmpty()) {
@@ -70,9 +61,6 @@ var TextView.compoundDrawableTop: Drawable?
         setOptionalCompoundDrawables(top = value)
     }
 
-/**
- * The right compound drawable
- */
 var TextView.compoundDrawableRight: Drawable?
     get() {
         return if (compoundDrawables.isEmpty()) {
@@ -85,9 +73,6 @@ var TextView.compoundDrawableRight: Drawable?
         setOptionalCompoundDrawables(right = value)
     }
 
-/**
- * The end compound drawable
- */
 var TextView.compoundDrawableEnd: Drawable?
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() {
@@ -102,9 +87,6 @@ var TextView.compoundDrawableEnd: Drawable?
         setOptionalRelativeCompoundDrawables(end = value)
     }
 
-/**
- * The bottom compound drawable
- */
 var TextView.compoundDrawableBottom: Drawable?
     get() {
         return if (compoundDrawables.isEmpty()) {
@@ -117,9 +99,6 @@ var TextView.compoundDrawableBottom: Drawable?
         setOptionalCompoundDrawables(bottom = value)
     }
 
-/**
- * Sets the compound drawables
- */
 fun TextView.setOptionalCompoundDrawables(left: Drawable? = compoundDrawableLeft,
                                           top: Drawable? = compoundDrawableTop,
                                           right: Drawable? = compoundDrawableRight,
@@ -127,9 +106,6 @@ fun TextView.setOptionalCompoundDrawables(left: Drawable? = compoundDrawableLeft
     setCompoundDrawables(left, top, right, bottom)
 }
 
-/**
- * Sets the relative compound drawables
- */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 fun TextView.setOptionalRelativeCompoundDrawables(start: Drawable? = compoundDrawableStart,
                                                   top: Drawable? = compoundDrawableTop,

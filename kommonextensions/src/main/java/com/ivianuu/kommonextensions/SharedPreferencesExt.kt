@@ -16,11 +16,22 @@
 
 package com.ivianuu.kommonextensions
 
-import android.content.res.Resources
-import android.util.DisplayMetrics
+import android.content.SharedPreferences
 
-@PublishedApi internal inline val systemMetrics: DisplayMetrics get() = Resources.getSystem().displayMetrics
+inline fun SharedPreferences.getString(key: String) = getString(key, "")
 
-inline val Int.dp: Float get() = (this * systemMetrics.density)
+inline fun SharedPreferences.getStringSet(key: String) = getStringSet(key, emptySet())
 
-inline val Int.sp: Float get() = (this * systemMetrics.scaledDensity)
+inline fun SharedPreferences.getInt(key: String) = getInt(key, 0)
+
+inline fun SharedPreferences.getLong(key: String) = getLong(key, 0L)
+
+inline fun SharedPreferences.getFloat(key: String) = getFloat(key, 0f)
+
+inline fun SharedPreferences.getBoolean(key: String) = getBoolean(key, false)
+
+inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
+    val editor = edit()
+    action(editor)
+    editor.apply()
+}

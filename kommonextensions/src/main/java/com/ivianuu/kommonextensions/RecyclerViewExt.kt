@@ -19,18 +19,13 @@ package com.ivianuu.kommonextensions
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.RecyclerView
 
-// ADD FIND FIRST VISIBLE POSITION
-
-/**
- * Hides/Shows the fab when RecyclerView is scrolled
- * */
 fun RecyclerView.hideFabOnScrolls(fab: FloatingActionButton) {
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-            if (dy > 0 && fab.isVisible()) {
+            if (dy > 0) {
                 fab.hide()
-            } else if (dy < 0 && !fab.isVisible()) {
+            } else if (dy < 0) {
                 fab.show()
             }
         }

@@ -21,12 +21,8 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.util.Base64
-import android.util.Patterns
 import java.io.ByteArrayOutputStream
 
-/**
- * Returns this bitmap with the new size
- */
 fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     val srcWidth = getWidth()
     val srcHeight = getHeight()
@@ -48,9 +44,6 @@ fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     }
 }
 
-/**
- * Flips a bitmap image 180 degrees.
- */
 fun Bitmap.mirror(): Bitmap {
     val matrix = Matrix()
     matrix.preScale(-1f, 1f)
@@ -58,9 +51,6 @@ fun Bitmap.mirror(): Bitmap {
     return Bitmap.createBitmap(this, 0, 0, width, height, matrix, false)
 }
 
-/**
- * Returns this bitmap as base 64
- */
 fun Bitmap.toBase64() : String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
@@ -68,7 +58,4 @@ fun Bitmap.toBase64() : String {
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
 
-/**
- * Returns this bitmap as drawable
- */
 fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable = BitmapDrawable(resources, this)

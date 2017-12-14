@@ -28,14 +28,8 @@ import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
 import android.support.annotation.Px
 
-/**
- * Returns the attributes boolean
- */
 fun Context.resolveBooleanAttr(@AttrRes attr: Int): Boolean = resolveBooleanAttr(attr, false)
 
-/**
- * Returns the attributes boolean
- */
 fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boolean {
     val array = getTypedArrayWithAttributes(attr)
     val bool = array.getBoolean(0, defaultValue)
@@ -43,15 +37,9 @@ fun Context.resolveBooleanAttr(@AttrRes attr: Int, defaultValue: Boolean): Boole
     return bool
 }
 
-/**
- * Returns the attributes color
- */
 @ColorInt
 fun Context.resolveColorAttr(@AttrRes attr: Int): Int = resolveColorAttr(attr, -1)
 
-/**
- * Returns the attributes color
- */
 @ColorInt
 fun Context.resolveColorAttr(@AttrRes attr: Int, @ColorInt defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
@@ -60,15 +48,9 @@ fun Context.resolveColorAttr(@AttrRes attr: Int, @ColorInt defaultValue: Int): I
     return color
 }
 
-/**
- * Returns the attributes color state list
- */
 fun Context.resolveColorStateListAttr(@AttrRes attr: Int): ColorStateList? =
         resolveColorStateListAttr(attr, null)
 
-/**
- * Returns the attributes color state list
- */
 fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
                                       defaultValue: ColorStateList?): ColorStateList? {
     val array = getTypedArrayWithAttributes(attr)
@@ -77,15 +59,9 @@ fun Context.resolveColorStateListAttr(@AttrRes attr: Int,
     return colorStateList ?: defaultValue
 }
 
-/**
- * Returns the attributes dimension
- */
 @Dimension
 fun Context.resolveDimensionAttr(@AttrRes attr: Int): Float = resolveDimensionAttr(attr, -1f)
 
-/**
- * Returns the attributes dimension
- */
 @Dimension
 fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Float): Float {
     val array = getTypedArrayWithAttributes(attr)
@@ -94,16 +70,10 @@ fun Context.resolveDimensionAttr(@AttrRes attr: Int, @Dimension defaultValue: Fl
     return dimension
 }
 
-/**
- * Returns the attributes dimension pixel offset
- */
 @Px
 fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int): Int =
         resolveDimensionPixelOffsetAttr(attr, -1)
 
-/**
- * Returns the attributes dimension pixel offset
- */
 @Px
 fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
@@ -112,16 +82,10 @@ fun Context.resolveDimensionPixelOffsetAttr(@AttrRes attr: Int, @Px defaultValue
     return dimension
 }
 
-/**
- * Returns the attributes dimension pixel size
- */
 @Px
 fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int): Int =
         resolveDimensionPixelSizeAttr(attr, -1)
 
-/**
- * Returns the attributes dimension pixel size
- */
 @Px
 fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
@@ -130,14 +94,8 @@ fun Context.resolveDimensionPixelSizeAttr(@AttrRes attr: Int, @Px defaultValue: 
     return dimension
 }
 
-/**
- * Returns the attributes drawable
- */
 fun Context.resolveDrawableAttr(@AttrRes attr: Int): Drawable? = resolveDrawableAttr(attr, null)
 
-/**
- * Returns the attributes drawable
- */
 fun Context.resolveDrawableAttr(@AttrRes attr: Int, defaultValue: Drawable?): Drawable? {
     val array = getTypedArrayWithAttributes(attr)
     val drawable = array.getDrawable(0)
@@ -145,14 +103,8 @@ fun Context.resolveDrawableAttr(@AttrRes attr: Int, defaultValue: Drawable?): Dr
     return drawable ?: defaultValue
 }
 
-/**
- * Returns the attributes float
- */
 fun Context.resolveFloatAttr(@AttrRes attr: Int): Float = resolveFloatAttr(attr, -1f)
 
-/**
- * Returns the attributes float
- */
 fun Context.resolveFloatAttr(@AttrRes attr: Int, defaultValue: Float): Float {
     val array = getTypedArrayWithAttributes(attr)
     val floatValue = array.getFloat(0, defaultValue)
@@ -160,14 +112,8 @@ fun Context.resolveFloatAttr(@AttrRes attr: Int, defaultValue: Float): Float {
     return floatValue
 }
 
-/**
- * Returns the attributes font
- */
 fun Context.resolveFontAttr(@AttrRes attr: Int): Typeface? = resolveFontAttr(attr, null)
 
-/**
- * Returns the attributes font
- */
 @TargetApi(Build.VERSION_CODES.O)
 fun Context.resolveFontAttr(@AttrRes attr: Int, defaultValue: Typeface?): Typeface? {
     val array = getTypedArrayWithAttributes(attr)
@@ -176,14 +122,8 @@ fun Context.resolveFontAttr(@AttrRes attr: Int, defaultValue: Typeface?): Typefa
     return font ?: defaultValue
 }
 
-/**
- * Returns the attributes int
- */
 fun Context.resolveIntAttr(@AttrRes attr: Int): Int = resolveIntAttr(attr, -1)
 
-/**
- * Returns the attributes int
- */
 fun Context.resolveIntAttr(@AttrRes attr: Int, defaultValue: Int): Int {
     val array = getTypedArrayWithAttributes(attr)
     val intValue = array.getInt(0, defaultValue)
@@ -191,14 +131,8 @@ fun Context.resolveIntAttr(@AttrRes attr: Int, defaultValue: Int): Int {
     return intValue
 }
 
-/**
- * Returns the attributes integer
- */
 fun Context.resolveIntegerAttr(@AttrRes attr: Int): Int = resolveIntegerAttr(attr, -1)
 
-/**
- * Returns the attributes integer
- */
 fun Context.resolveIntegerAttr(@AttrRes attr: Int, defaultValue: Int?): Int {
     val array = getTypedArrayWithAttributes(attr)
     val integer = array.getInteger(0, defaultValue!!)
@@ -206,14 +140,8 @@ fun Context.resolveIntegerAttr(@AttrRes attr: Int, defaultValue: Int?): Int {
     return integer
 }
 
-/**
- * Returns the attributes string
- */
 fun Context.resolveStringAttr(@AttrRes attr: Int): String? = resolveStringAttr(attr, null)
 
-/**
- * Returns the attributes string
- */
 fun Context.resolveStringAttr(@AttrRes attr: Int, defaultValue: String?): String? {
     val array = getTypedArrayWithAttributes(attr)
     val string = array.getString(0)
@@ -221,14 +149,8 @@ fun Context.resolveStringAttr(@AttrRes attr: Int, defaultValue: String?): String
     return string ?: defaultValue
 }
 
-/**
- * Returns the attributes text
- */
 fun Context.resolveTextAttr(@AttrRes attr: Int): CharSequence? = resolveStringAttr(attr, null)
 
-/**
- * Returns the attributes text
- */
 fun Context.resolveTextAttr(@AttrRes attr: Int, defaultValue: CharSequence?): CharSequence? {
     val array = getTypedArrayWithAttributes(attr)
     val charSequence = array.getText(0)
@@ -236,15 +158,9 @@ fun Context.resolveTextAttr(@AttrRes attr: Int, defaultValue: CharSequence?): Ch
     return charSequence ?: defaultValue
 }
 
-/**
- * Returns the attributes text array
- */
 fun Context.resolveTextArrayAttr(@AttrRes attr: Int): Array<CharSequence>? =
         resolveTextArrayAttr(attr, null)
 
-/**
- * Returns the attributes text array
- */
 fun Context.resolveTextArrayAttr(@AttrRes attr: Int,
                                  defaultValue: Array<CharSequence>?): Array<CharSequence>? {
     val array = getTypedArrayWithAttributes(attr)

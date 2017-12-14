@@ -16,29 +16,79 @@
 
 package com.ivianuu.kommonextensions
 
-import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
+import java.io.Serializable
 
-inline fun createBundle(func: Bundle.() -> Unit): Bundle {
+fun bundleOf(key: String, value: Boolean): Bundle = Bundle().apply { putBoolean(key, value) }
+fun bundleOf(key: String, value: Byte): Bundle = Bundle().apply { putByte(key, value) }
+fun bundleOf(key: String, value: Char): Bundle = Bundle().apply { putChar(key, value) }
+fun bundleOf(key: String, value: Short): Bundle = Bundle().apply { putShort(key, value) }
+fun bundleOf(key: String, value: Int): Bundle = Bundle().apply { putInt(key, value) }
+fun bundleOf(key: String, value: Long): Bundle = Bundle().apply { putLong(key, value) }
+fun bundleOf(key: String, value: Float): Bundle = Bundle().apply { putFloat(key, value) }
+fun bundleOf(key: String, value: Double): Bundle = Bundle().apply { putDouble(key, value) }
+fun bundleOf(key: String, value: String): Bundle = Bundle().apply { putString(key, value) }
+fun bundleOf(key: String, value: CharSequence): Bundle = Bundle().apply { putCharSequence(key, value) }
+fun bundleOf(key: String, value: Parcelable): Bundle = Bundle().apply { putParcelable(key, value) }
+fun bundleOf(key: String, value: java.io.Serializable): Bundle = Bundle().apply { putSerializable(key, value) }
+fun bundleOf(key: String, value: BooleanArray): Bundle = Bundle().apply { putBooleanArray(key, value) }
+fun bundleOf(key: String, value: ByteArray): Bundle = Bundle().apply { putByteArray(key, value) }
+fun bundleOf(key: String, value: CharArray): Bundle = Bundle().apply { putCharArray(key, value) }
+fun bundleOf(key: String, value: DoubleArray): Bundle = Bundle().apply { putDoubleArray(key, value) }
+fun bundleOf(key: String, value: FloatArray): Bundle = Bundle().apply { putFloatArray(key, value) }
+fun bundleOf(key: String, value: IntArray): Bundle = Bundle().apply { putIntArray(key, value) }
+fun bundleOf(key: String, value: LongArray): Bundle = Bundle().apply { putLongArray(key, value) }
+fun bundleOf(key: String, value: ShortArray): Bundle = Bundle().apply { putShortArray(key, value) }
+fun bundleOf(key: String, value: Bundle): Bundle = Bundle().apply { putBundle(key, value) }
+fun bundleOf(key: String, value: Array<*>): Bundle {
     val bundle = Bundle()
-    bundle.func()
+    @Suppress("UNCHECKED_CAST") when {
+        value.isArrayOf<Parcelable>() -> bundle.putParcelableArray(key, value as Array<out Parcelable>)
+        value.isArrayOf<CharSequence>() -> bundle.putCharSequenceArray(key, value as Array<out CharSequence>)
+        value.isArrayOf<String>() -> bundle.putStringArray(key, value as Array<out String>)
+        else -> throw IllegalStateException("Unsupported bundle component (${value.javaClass})")
+    }
     return bundle
 }
 
-inline fun createBundle(loader: ClassLoader, func: Bundle.() -> Unit): Bundle {
-    val bundle = Bundle(loader)
-    bundle.func()
-    return bundle
-}
-
-inline fun createBundle(capacity: Int, func: Bundle.() -> Unit): Bundle {
-    val bundle = Bundle(capacity)
-    bundle.func()
-    return bundle
-}
-
-inline fun createBundle(b: Bundle?, func: Bundle.() -> Unit): Bundle {
-    val bundle = Bundle(b)
-    bundle.func()
-    return bundle
+fun bundleOf(vararg pairs: Pair<String, Any?>): Bundle = when {
+    pairs.isEmpty() -> Bundle.EMPTY
+    else -> {
+        val bundle = Bundle()
+        pairs.forEach { (key, value) ->
+            when (value) {
+                null -> bundle.putSerializable(key, null)
+                is Boolean -> bundle.putBoolean(key, value)
+                is Byte -> bundle.putByte(key, value)
+                is Char -> bundle.putChar(key, value)
+                is Short -> bundle.putShort(key, value)
+                is Int -> bundle.putInt(key, value)
+                is Long -> bundle.putLong(key, value)
+                is Float -> bundle.putFloat(key, value)
+                is Double -> bundle.putDouble(key, value)
+                is String -> bundle.putString(key, value)
+                is CharSequence -> bundle.putCharSequence(key, value)
+                is Parcelable -> bundle.putParcelable(key, value)
+                is Serializable -> bundle.putSerializable(key, value)
+                is BooleanArray -> bundle.putBooleanArray(key, value)
+                is ByteArray -> bundle.putByteArray(key, value)
+                is CharArray -> bundle.putCharArray(key, value)
+                is DoubleArray -> bundle.putDoubleArray(key, value)
+                is FloatArray -> bundle.putFloatArray(key, value)
+                is IntArray -> bundle.putIntArray(key, value)
+                is LongArray -> bundle.putLongArray(key, value)
+                is Array<*> -> @Suppress("UNCHECKED_CAST") when {
+                    value.isArrayOf<Parcelable>() -> bundle.putParcelableArray(key, value as Array<out Parcelable>)
+                    value.isArrayOf<CharSequence>() -> bundle.putCharSequenceArray(key, value as Array<out CharSequence>)
+                    value.isArrayOf<String>() -> bundle.putStringArray(key, value as Array<out String>)
+                    else -> throw IllegalStateException("Unsupported bundle component (${value.javaClass})")
+                }
+                is ShortArray -> bundle.putShortArray(key, value)
+                is Bundle -> bundle.putBundle(key, value)
+                else -> throw IllegalStateException("Unsupported bundle component (${value.javaClass})")
+            }
+        }
+        bundle
+    }
 }

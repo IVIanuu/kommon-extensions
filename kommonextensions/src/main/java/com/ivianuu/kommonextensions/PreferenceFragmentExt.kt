@@ -16,21 +16,9 @@
 
 package com.ivianuu.kommonextensions
 
-import android.app.Fragment
-import android.support.annotation.LayoutRes
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
+import android.preference.Preference
+import android.preference.PreferenceFragment
 
-val Fragment.nonNullActivity get() = activity!!
+inline fun <reified T : Preference> PreferenceFragment.find(key: CharSequence): T = findPreference(key) as T
 
-fun Fragment.hideInputMethod() {
-    activity?.hideInputMethod()
-}
-
-fun Fragment.showInputMethod(v: EditText) {
-    activity?.showInputMethod(v)
-}
-
-fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View = LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)
+inline fun <reified T : Preference> PreferenceFragment.findNullable(key: CharSequence): T? = findPreference(key) as? T

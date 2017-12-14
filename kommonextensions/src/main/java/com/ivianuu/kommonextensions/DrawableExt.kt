@@ -23,9 +23,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 
-/**
- * Returns this drawable as a bitmap
- */
 fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap {
     val bitmap: Bitmap
 
@@ -47,9 +44,6 @@ fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap
     return bitmap
 }
 
-/**
- * Tints and mutates this drawable
- */
 fun Drawable.tint(@ColorInt color: Int,
                   mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN,
                   mutate: Boolean = true) {

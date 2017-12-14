@@ -23,62 +23,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**
- * Inflates the layout res
- */
 fun <V : View> ViewGroup.inflate(@LayoutRes res: Int, attachToThis: Boolean = false)
         = LayoutInflater.from(context).inflate(res, this, attachToThis) as V
 
-/**
- * Iterates trough all childs
- */
-inline fun ViewGroup.forEach(func: (View) -> Unit) {
-    for (i in 0 until childCount) {
-        func(getChildAt(i))
-    }
-}
-
-/**
- * Iterates trough all childs
- */
-inline fun ViewGroup.forEachIndexed(func: (Int, View) -> Unit) {
-    for (i in 0 until childCount) {
-        func(i, getChildAt(i))
-    }
-}
-
-/**
- * Returns the view at the index
- */
 operator fun ViewGroup.get(index: Int) = getChildAt(index)
 
-/**
- * Returns the index of the view
- */
+fun ViewGroup.getOrNull(index: Int): View? = if (index in 0..lastIndex()) getChildAt(index) else null
+
 operator fun ViewGroup.get(child: View) = indexOfChild(child)
 
-/**
- * Adds the view
- */
 operator fun ViewGroup.plusAssign(child: View) = addView(child)
 
-/**
- * Removes the view
- */
 operator fun ViewGroup.minusAssign(child: View) = removeView(child)
 
-/**
- * Returns whether this group contains the view
- */
 operator fun ViewGroup.contains(child: View) = get(child) != -1
 
-/**
- * Iterator of a view group
- */
-fun ViewGroup.children() = object : Iterable<View> {
-    override fun iterator() = object : Iterator<View> {
-        var index = 0
-        override fun hasNext() = index < childCount
-        override fun next() = get(index++)
-    }
-}
+fun ViewGroup.childs(): List<View> = (0 until childCount).map { getChildAt(it) }
+
+fun ViewGroup.firstChild(): View = this[0]
+fun ViewGroup.firstChildOrNull(): View? = if (isEmpty()) null else firstChild()
+fun ViewGroup.lastChild(): View = this[lastIndex()]
+fun ViewGroup.lastChildOrNull(): View? = if (isEmpty()) null else lastChild()
+
+fun ViewGroup.isEmpty() = childCount == 0
+fun ViewGroup.isNotEmpty() = !isEmpty()
+fun ViewGroup.lastIndex() = childCount - 1
+
+inline fun ViewGroup.forEachChild(action: (View) -> Unit) = childs().forEach(action)
+inline fun ViewGroup.forEachChildIndexed(action: (Int, View) -> Unit) = childs().forEachIndexed(action)

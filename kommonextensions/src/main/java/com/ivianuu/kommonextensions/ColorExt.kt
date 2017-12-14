@@ -19,14 +19,8 @@ package com.ivianuu.kommonextensions
 import android.graphics.Color
 import android.support.annotation.ColorInt
 
-/**
- * Parses this string and returns his color
- */
 @ColorInt inline fun String.toColorInt(): Int = Color.parseColor(this)
 
-/**
- * Strips the color
- */
 fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
 fun Int.shift(by: Float): Int {
@@ -38,24 +32,12 @@ fun Int.shift(by: Float): Int {
     return (alpha shl 24) + (0x00ffffff and Color.HSVToColor(hsv))
 }
 
-/**
- * Returns the darken color
- */
 fun Int.darken(): Int = shift(0.9f)
 
-/**
- * Returns the lighten color
- */
 fun Int.lighten(): Int = shift(1.1f)
 
-/**
- * Returns whether the color is light
- */
 fun Int.isDark() = !isLight()
 
-/**
- * Returns whether the color is light
- */
 fun Int.isLight(): Boolean {
     val darkness =
             1 - (0.299 * Color.red(this)
@@ -64,9 +46,6 @@ fun Int.isLight(): Boolean {
     return darkness < 0.4
 }
 
-/**
- * Returns the inverted color
- */
 fun Int.invert(): Int {
     val r = 255 - Color.red(this)
     val g = 255 - Color.green(this)
@@ -74,9 +53,6 @@ fun Int.invert(): Int {
     return Color.argb(Color.alpha(this), r, g, b)
 }
 
-/**
- * Adjusts the alpha of the color
- */
 fun Int.adjustAlpha(factor: Float): Int {
     val alpha = Math.round(Color.alpha(this) * factor)
     val red = Color.red(this)
@@ -85,18 +61,12 @@ fun Int.adjustAlpha(factor: Float): Int {
     return Color.argb(alpha, red, green, blue)
 }
 
-/**
- * Returns the color with the alpha
- */
 fun Int.withAlpha(alpha: Float): Int {
     val a = Math.min(255, Math.max(0, (alpha * 255).toInt())) shl 24
     val rgb = 0x00ffffff and this
     return a + rgb
 }
 
-/**
- * Returns the blended color
- */
 fun Int.blendWith(other: Int, ratio: Float): Int {
     val inverseRatio = 1f - ratio
     val a = Color.alpha(this) * inverseRatio + Color.alpha(other) * ratio

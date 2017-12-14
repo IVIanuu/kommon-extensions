@@ -16,21 +16,20 @@
 
 package com.ivianuu.kommonextensions
 
-import android.app.Fragment
-import android.support.annotation.LayoutRes
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
+import android.support.v4.view.ViewPager
 
-val Fragment.nonNullActivity get() = activity!!
-
-fun Fragment.hideInputMethod() {
-    activity?.hideInputMethod()
+fun ViewPager.back(animate: Boolean = true) {
+    setCurrentItem(currentItem - 1, animate)
 }
 
-fun Fragment.showInputMethod(v: EditText) {
-    activity?.showInputMethod(v)
+fun ViewPager.forward(animate: Boolean = true) {
+    setCurrentItem(currentItem + 1, animate)
 }
 
-fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View = LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)
+fun ViewPager.isOnLastPage(): Boolean {
+    return currentItem == adapter.count - 1
+}
+
+fun ViewPager.isOnFirstPage(): Boolean {
+    return currentItem == 0
+}

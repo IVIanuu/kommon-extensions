@@ -16,68 +16,30 @@
 
 package com.ivianuu.kommonextensions
 
-import android.accounts.AccountManager
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.app.*
-import android.app.admin.DevicePolicyManager
-import android.app.job.JobScheduler
-import android.app.usage.NetworkStatsManager
-import android.app.usage.UsageStatsManager
-import android.appwidget.AppWidgetManager
-import android.bluetooth.BluetoothManager
-import android.content.*
-import android.content.pm.LauncherApps
-import android.content.pm.ShortcutManager
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.ColorStateList
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.hardware.ConsumerIrManager
-import android.hardware.SensorManager
-import android.hardware.camera2.CameraManager
-import android.hardware.display.DisplayManager
-import android.hardware.fingerprint.FingerprintManager
-import android.hardware.input.InputManager
-import android.hardware.usb.UsbManager
-import android.location.LocationManager
-import android.media.AudioManager
-import android.media.MediaRouter
-import android.media.midi.MidiManager
-import android.media.projection.MediaProjectionManager
-import android.media.session.MediaSessionManager
-import android.media.tv.TvInputManager
 import android.net.ConnectivityManager
-import android.net.nsd.NsdManager
-import android.net.wifi.WifiManager
-import android.net.wifi.p2p.WifiP2pManager
-import android.nfc.NfcManager
-import android.os.*
-import android.os.storage.StorageManager
-import android.print.PrintManager
+import android.os.BatteryManager
+import android.os.Build
 import android.support.annotation.*
 import android.support.graphics.drawable.VectorDrawableCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
-import android.telecom.TelecomManager
-import android.telephony.CarrierConfigManager
-import android.telephony.SubscriptionManager
-import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.LayoutInflater
 import android.view.Surface
-import android.view.WindowManager
-import android.view.accessibility.AccessibilityManager
-import android.view.accessibility.CaptioningManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.inputmethod.InputMethodManager
-import android.view.textservice.TextServicesManager
 import com.ivianuu.kommonextensions.ValueHolder.VALUE
 
 // INTENTS
@@ -96,31 +58,15 @@ inline fun <reified T : Any> Context.createIntent(initializer: Intent.() -> Unit
     return intent
 }
 
-// ATTRS
-
-
-
 // RESOURCES
 
-/**
- * Returns the animation for this resource
- */
 fun Context.getResAnim(@AnimRes resId: Int) : Animation = AnimationUtils.loadAnimation(this, resId)
 
-/**
- * Returns the int array for this resource
- */
 fun Context.getResIntArray(@ArrayRes resId: Int) : IntArray = resources.getIntArray(resId)
 
-/**
- * Returns the string array for this resource
- */
 fun Context.getResStringArray(@ArrayRes resId: Int) : Array<String> =
         resources.getStringArray(resId)
 
-/**
- * Returns the text array for this resource
- */
 fun Context.getResTextArray(@ArrayRes resId: Int) : Array<CharSequence> =
         resources.getTextArray(resId)
 
@@ -212,24 +158,6 @@ fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
     drawable.tint(color, mode)
 
     return drawable
-}
-
-// CONVERT
-
-/**
- * Converts dp to pixels
- */
-fun Context.convertDpToPx(dp: Int): Float {
-    val metrics = resources.displayMetrics
-    return (dp * metrics.density)
-}
-
-/**
- * Converts px to dp
- */
-fun Context.convertPxToDp(px: Int): Int {
-    val metrics = resources.displayMetrics
-    return (px / metrics.density).toInt()
 }
 
 private object ValueHolder {

@@ -24,27 +24,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 
-/**
- * The activity of this fragment as appcompat activity
- */
-val Fragment.appCompatActivity get() = activity as AppCompatActivity
+val Fragment.appCompatActivity get() = activity as AppCompatActivity?
 
-/**
- * Hides the soft input
- */
+val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
+
 fun Fragment.hideInputMethod() {
     activity?.hideInputMethod()
 }
 
-/**
- * Shows the soft input
- */
 fun Fragment.showInputMethod(v: EditText) {
     activity?.showInputMethod(v)
 }
 
-/**
- * Inflates the view
- */
 fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View =
         LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)

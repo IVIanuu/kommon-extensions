@@ -18,9 +18,6 @@ package com.ivianuu.kommonextensions
 
 import android.support.design.widget.FloatingActionButton
 
-/**
- * Animates the fab in or out
- */
 fun FloatingActionButton.show(show: Boolean) {
     if (show) {
         show()
@@ -29,9 +26,6 @@ fun FloatingActionButton.show(show: Boolean) {
     }
 }
 
-/**
- * Animates the fab in or out
- */
 inline fun FloatingActionButton.show(func: () -> Boolean) {
     if (func()) {
         show()
