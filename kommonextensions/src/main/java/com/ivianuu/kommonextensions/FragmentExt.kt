@@ -17,12 +17,17 @@
 package com.ivianuu.kommonextensions
 
 import android.app.Fragment
+import android.os.Build
 import android.support.annotation.LayoutRes
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+
+val Fragment.nonNullContext @RequiresApi(Build.VERSION_CODES.M)
+get() = context!!
 
 val Fragment.nonNullActivity get() = activity!!
 
