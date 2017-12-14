@@ -18,12 +18,17 @@ package com.ivianuu.kommonextensions
 
 import android.app.Fragment
 import android.support.annotation.LayoutRes
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 
 val Fragment.nonNullActivity get() = activity!!
+
+val Fragment.appCompatActivity get() = activity as AppCompatActivity?
+
+val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
 
 fun Fragment.hideInputMethod() {
     activity?.hideInputMethod()

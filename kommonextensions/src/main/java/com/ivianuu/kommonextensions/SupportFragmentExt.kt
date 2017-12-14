@@ -24,6 +24,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 
+val Fragment.nonNullActivity get() = activity!!
+
 val Fragment.appCompatActivity get() = activity as AppCompatActivity?
 
 val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
