@@ -65,7 +65,7 @@ inline fun Activity.supportFinishAffinity() {
     ActivityCompat.finishAffinity(this)
 }
 
-inline fun Activity.finishWithResult(resultCode: Int, data: Intent) {
+inline fun Activity.finishWithResult(resultCode: Int, data: Intent? = null) {
     setResult(resultCode, data)
     finish()
 }
