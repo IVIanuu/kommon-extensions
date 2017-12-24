@@ -37,12 +37,12 @@ inline fun Menu.lastIndex(): Int = size() - 1
 inline fun Menu.forEach(action: (MenuItem) -> Unit) = items().forEach(action)
 inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items().forEachIndexed(action)
 
-operator inline fun Menu.get(index: Int) = getItem(index)
+inline operator fun Menu.get(index: Int) = getItem(index)
 
 inline fun Menu.getOrNull(index: Int): MenuItem? = if (index in 0..lastIndex()) getItem(index) else null
 
-operator inline fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
+inline operator fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
 
-operator inline fun Menu.contains(item: MenuItem) = get(item) != -1
+inline operator fun Menu.contains(item: MenuItem) = get(item) != -1
 
 inline fun Menu.items(): List<MenuItem> = (0 until size()).map { get(it) }

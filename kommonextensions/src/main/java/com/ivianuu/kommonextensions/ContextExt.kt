@@ -92,28 +92,16 @@ inline fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawab
 @ColorInt
 inline fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 
-/**
- * Returns the color state list for this resource
- */
 inline fun Context.getResColorStateList(resId: Int) : ColorStateList =
         ContextCompat.getColorStateList(this, resId)
 
-/**
- * Returns the drawable for this resource
- */
 inline fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable =
         ContextCompat.getDrawable(this, resId)
 
-/**
- * Returns the font for this resource
- */
 inline fun Context.getResFont(@FontRes resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
 
 // TINTED DRAWABLES
 
-/**
- * Returns the tinted drawable
- */
 inline fun Context.createTintedDrawable(@DrawableRes drawableRes: Int,
                                  @ColorInt color: Int,
                                  mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
@@ -123,9 +111,6 @@ inline fun Context.createTintedDrawable(@DrawableRes drawableRes: Int,
     return drawable
 }
 
-/**
- * Returns the tinted vector drawable
- */
 inline fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
                                        @ColorInt color: Int,
                                        mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
@@ -141,47 +126,29 @@ object ValueHolder {
 
 // DISPLAY
 
-/**
- * Returns whether is portrait
- */
 inline fun Context.isPortrait(): Boolean = !isLandscape()
 
-/**
- * Returns whether is landscape
- */
 inline fun Context.isLandscape(): Boolean {
     val rotation = getRotation()
     return rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270
 }
 
-/**
- * Returns the current rotation
- */
 inline fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
 
 val metrics = DisplayMetrics()
 
-/**
- * Returns the screen height
- */
 @Px
 inline fun Context.getScreenHeight(): Int {
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.heightPixels
 }
 
-/**
- * Returns the screen width
- */
 @Px
 inline fun Context.getScreenWidth(): Int {
     windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.widthPixels
 }
 
-/**
- * Returns the real screen height
- */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 inline fun Context.getRealScreenHeight(): Int {
@@ -189,9 +156,6 @@ inline fun Context.getRealScreenHeight(): Int {
     return metrics.heightPixels
 }
 
-/**
- * Returns the real screen width
- */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 inline fun Context.getRealScreenWidth(): Int {
@@ -200,15 +164,10 @@ inline fun Context.getRealScreenWidth(): Int {
 }
 
 // DEVICE SPECIFIC
-/**
- * Returns whether is tablet
- */
+
 inline fun Context.isTablet(): Boolean =
         resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_LARGE
 
-/**
- * Returns whether has navigation bar
- */
 inline fun Context.hasNavigationBar(): Boolean {
     val id = resources.getIdentifier("config_showNavigationBar", "bool", "android")
     return id > 0 && resources.getBoolean(id)
@@ -216,27 +175,18 @@ inline fun Context.hasNavigationBar(): Boolean {
 
 // NETWORK
 
-/**
- * Returns whether the device is connected
- */
 @SuppressLint("MissingPermission")
 inline fun Context.isConnected(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false
 }
 
-/**
- * Returns whether connected to wifi
- */
 @SuppressLint("MissingPermission")
 inline fun Context.isConnectedWifi(): Boolean {
     val info = connectivityManager.activeNetworkInfo
     return info?.isConnected ?: false && info?.type == ConnectivityManager.TYPE_WIFI
 }
 
-/**
- * Returns whether connected to mobile
- */
 @SuppressLint("MissingPermission")
 inline fun Context.isConnectedMobile(): Boolean {
     val info = connectivityManager.activeNetworkInfo
@@ -246,9 +196,6 @@ inline fun Context.isConnectedMobile(): Boolean {
 
 // POWER
 
-/**
- * Returns whether the screen is on
- */
 inline fun Context.isScreenOn(): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         powerManager.isInteractive
@@ -257,9 +204,6 @@ inline fun Context.isScreenOn(): Boolean {
     }
 }
 
-/**
- * Returns whether the device is charging
- */
 inline fun Context.isCharging(): Boolean {
     val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
     val intent = registerReceiver(null, intentFilter) ?: return false
@@ -270,10 +214,6 @@ inline fun Context.isCharging(): Boolean {
             || Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS
 }
 
-/**
- * Returns the current battery level
- * Or -1 if we cannot get the battery level
- */
 inline fun Context.getBatteryLevel(): Int {
     val batteryIntent = registerReceiver(null,
             IntentFilter(Intent.ACTION_BATTERY_CHANGED)) ?: return -1
