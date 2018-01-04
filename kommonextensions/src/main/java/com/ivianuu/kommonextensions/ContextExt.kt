@@ -93,10 +93,10 @@ inline fun Context.getResBitmap(@DrawableRes resId: Int) : Bitmap = getResDrawab
 inline fun Context.getResColor(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 
 inline fun Context.getResColorStateList(resId: Int) : ColorStateList =
-        ContextCompat.getColorStateList(this, resId)
+        ContextCompat.getColorStateList(this, resId)!!
 
 inline fun Context.getResDrawable(@DrawableRes resId : Int) : Drawable =
-        ContextCompat.getDrawable(this, resId)
+        ContextCompat.getDrawable(this, resId)!!
 
 inline fun Context.getResFont(@FontRes resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
 

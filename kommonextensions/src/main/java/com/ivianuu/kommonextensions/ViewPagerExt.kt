@@ -27,7 +27,7 @@ inline fun ViewPager.forward(animate: Boolean = true) {
 }
 
 inline fun ViewPager.isOnLastPage(): Boolean {
-    return currentItem == adapter.count - 1
+    return currentItem == adapter!!.count - 1
 }
 
 inline fun ViewPager.isOnFirstPage(): Boolean {
