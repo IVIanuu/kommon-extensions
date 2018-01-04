@@ -12,7 +12,7 @@ buildscript {
 
         mavenPlugin = 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
-        supportVersion = '26.1.0'
+        supportVersion = '27.0.1'
         supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
         supportDesign = "com.android.support:design:$supportVersion"
         supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"

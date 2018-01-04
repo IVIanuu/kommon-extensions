@@ -20,6 +20,10 @@ import android.os.Bundle
 import android.os.Parcelable
 import java.io.Serializable
 
+private val EMPTY_BUNDLE = Bundle()
+
+fun emptyBundle() = EMPTY_BUNDLE
+
 inline fun bundleOf(key: String, value: Boolean): Bundle = Bundle().apply { putBoolean(key, value) }
 inline fun bundleOf(key: String, value: Byte): Bundle = Bundle().apply { putByte(key, value) }
 inline fun bundleOf(key: String, value: Char): Bundle = Bundle().apply { putChar(key, value) }
