@@ -41,7 +41,7 @@ inline fun Fragment.getActivityOrThrow(): Activity {
     throw IllegalStateException("not attached")
 }
 
-inline fun Fragment.getAppCompatActivityOrThrow(): Activity {
+inline fun Fragment.getAppCompatActivityOrThrow(): AppCompatActivity {
     activity?.let { return it as AppCompatActivity }
     throw IllegalStateException("not attached")
 }
