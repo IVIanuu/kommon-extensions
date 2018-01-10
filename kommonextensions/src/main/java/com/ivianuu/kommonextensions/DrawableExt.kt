@@ -24,18 +24,16 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 
 inline fun Drawable.toBitmap(config : Bitmap.Config = Bitmap.Config.ARGB_8888) : Bitmap {
-    val bitmap: Bitmap
+    val bitmap = if (intrinsicWidth <= 0 || intrinsicHeight <= 0) {
+        Bitmap.createBitmap(1, 1, config)
+    } else {
+        Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, config)
+    }
 
     if (this is BitmapDrawable) {
         if (this.bitmap != null) {
             return this.bitmap
         }
-    }
-
-    bitmap = if (intrinsicWidth <= 0 || intrinsicHeight <= 0) {
-        Bitmap.createBitmap(1, 1, config)
-    } else {
-        Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, config)
     }
 
     val canvas = Canvas(bitmap)

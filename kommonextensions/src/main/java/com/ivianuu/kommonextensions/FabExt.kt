@@ -33,3 +33,19 @@ inline fun FloatingActionButton.show(func: () -> Boolean) {
         hide()
     }
 }
+
+inline fun FloatingActionButton.hide(hide: Boolean) {
+    if (hide) {
+        hide()
+    } else {
+        show()
+    }
+}
+
+inline fun FloatingActionButton.hide(func: () -> Boolean) {
+    if (func()) {
+        hide()
+    } else {
+        show()
+    }
+}

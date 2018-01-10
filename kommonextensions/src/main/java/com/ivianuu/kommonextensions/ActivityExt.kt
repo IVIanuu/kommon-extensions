@@ -22,7 +22,6 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.support.v4.app.ActivityCompat
 import android.view.View
-import android.widget.EditText
 
 inline val Activity.contentView: View
     get() = findViewById(android.R.id.content)
@@ -46,8 +45,8 @@ inline fun Activity.hideInputMethod() {
     inputMethodManager.hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
 }
 
-inline fun Activity.showInputMethod(v: EditText) {
-    inputMethodManager.showSoftInput(v, 0)
+inline fun Activity.showInputMethod(view: View) {
+    inputMethodManager.showSoftInput(view, 0)
 }
 
 // FINISHING

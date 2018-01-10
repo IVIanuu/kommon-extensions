@@ -16,7 +16,9 @@
 
 package com.ivianuu.kommonextensions
 
+import android.app.Activity
 import android.app.Fragment
+import android.content.Context
 import android.os.Build
 import android.support.annotation.LayoutRes
 import android.support.annotation.RequiresApi
@@ -26,14 +28,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 
-inline val Fragment.nonNullContext @RequiresApi(Build.VERSION_CODES.M)
-get() = context!!
-
-inline val Fragment.nonNullActivity get() = activity!!
-
 inline val Fragment.appCompatActivity get() = activity as AppCompatActivity?
 
-inline val Fragment.nonNullAppCompatActivity get() = appCompatActivity!!
+@RequiresApi(Build.VERSION_CODES.M)
+inline fun Fragment.getContextOrThrow(): Context {
+    context?.let { return it }
+    throw IllegalStateException("not attached")
+}
+
+inline fun Fragment.getActivityOrThrow(): Activity {
+    activity?.let { return it }
+    throw IllegalStateException("not attached")
+}
+
+inline fun Fragment.getAppCompatActivityOrThrow(): Activity {
+    activity?.let { return it as AppCompatActivity }
+    throw IllegalStateException("not attached")
+}
 
 inline fun Fragment.hideInputMethod() {
     activity?.hideInputMethod()
