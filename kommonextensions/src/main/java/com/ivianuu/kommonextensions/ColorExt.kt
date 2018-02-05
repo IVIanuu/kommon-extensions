@@ -19,7 +19,7 @@ package com.ivianuu.kommonextensions
 import android.graphics.Color
 import android.support.annotation.ColorInt
 
-@ColorInt inline fun String.toColorInt(): Int = Color.parseColor(this)
+inline fun String.toColorInt(): Int = Color.parseColor(this)
 
 inline fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
