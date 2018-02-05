@@ -16,9 +16,44 @@
 
 package com.ivianuu.kommonextensions
 
+import android.app.Activity
+import android.content.Intent
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.content.systemService
+
+val Activity.contentView: View
+    get() = findViewById(android.R.id.content)
+
+fun Activity.hideInputMethod() {
+    systemService<InputMethodManager>().hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
+}
+
+fun Activity.showInputMethod(view: View) {
+    systemService<InputMethodManager>().showSoftInput(view, 0)
+}
+
+fun Activity.finishWithoutTransition() {
+    overridePendingTransition(0, 0)
+    finish()
+}
+
+fun Activity.supportFinishAfterTransition() {
+    ActivityCompat.finishAfterTransition(this)
+}
+
+fun Activity.supportFinishAffinity() {
+    ActivityCompat.finishAffinity(this)
+}
+
+fun Activity.finishWithResult(resultCode: Int, data: Intent? = null) {
+    setResult(resultCode, data)
+    finish()
+}
 
 inline fun AppCompatActivity.setSupportActionBar(toolbar: Toolbar, setup: ActionBar.() -> Unit) {
     setSupportActionBar(toolbar)

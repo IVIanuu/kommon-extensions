@@ -31,9 +31,10 @@ android {
 
 dependencies {
     // Android Support
-    implementation rootProject.ext.supportAppCompat
-    implementation rootProject.ext.supportDesign
-    implementation rootProject.ext.supportRecyclerView
+    api rootProject.ext.supportAppCompat
+    api rootProject.ext.supportDesign
+    api rootProject.ext.supportRecyclerView
+    api rootProject.ext.ktAndroid
 
     // Kotlin
     api rootProject.ext.kotlinStdlib

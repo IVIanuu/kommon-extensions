@@ -16,15 +16,13 @@
 
 package com.ivianuu.kommonextensions
 
-import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.Matrix
-import android.graphics.drawable.BitmapDrawable
 import android.util.Base64
 import java.io.ByteArrayOutputStream
 
-inline fun Bitmap.resize(width: Int, height: Int) : Bitmap {
+fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     val srcWidth = getWidth()
+
     val srcHeight = getHeight()
 
     val widthRatio = srcWidth.toFloat() / width.toFloat()
@@ -44,18 +42,9 @@ inline fun Bitmap.resize(width: Int, height: Int) : Bitmap {
     }
 }
 
-inline fun Bitmap.mirror(): Bitmap {
-    val matrix = Matrix()
-    matrix.preScale(-1f, 1f)
-
-    return Bitmap.createBitmap(this, 0, 0, width, height, matrix, false)
-}
-
-inline fun Bitmap.toBase64() : String {
+fun Bitmap.toBase64() : String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
     val b = byteArrayOutputStream.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
-
-inline fun Bitmap.toDrawable(resources: Resources) : BitmapDrawable = BitmapDrawable(resources, this)

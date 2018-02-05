@@ -18,7 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.support.design.widget.FloatingActionButton
 
-inline fun FloatingActionButton.show(show: Boolean) {
+fun FloatingActionButton.show(show: Boolean) {
     if (show) {
         show()
     } else{
@@ -34,7 +34,7 @@ inline fun FloatingActionButton.show(func: () -> Boolean) {
     }
 }
 
-inline fun FloatingActionButton.hide(hide: Boolean) {
+fun FloatingActionButton.hide(hide: Boolean) {
     if (hide) {
         hide()
     } else {

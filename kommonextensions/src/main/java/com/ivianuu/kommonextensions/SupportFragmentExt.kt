@@ -18,37 +18,31 @@ package com.ivianuu.kommonextensions
 
 import android.app.Activity
 import android.content.Context
-import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
-inline val Fragment.appCompatActivity get() = activity as AppCompatActivity?
+val Fragment.appCompatActivity get() = activity as AppCompatActivity?
 
-inline fun Fragment.getContextOrThrow(): Context {
+fun Fragment.getContextOrThrow(): Context {
     context?.let { return it }
     throw IllegalStateException("not attached")
 }
 
-inline fun Fragment.getActivityOrThrow(): Activity {
+fun Fragment.getActivityOrThrow(): Activity {
     activity?.let { return it }
     throw IllegalStateException("not attached")
 }
 
-inline fun Fragment.getAppCompatActivityOrThrow(): AppCompatActivity {
+fun Fragment.getAppCompatActivityOrThrow(): AppCompatActivity {
     activity?.let { return it as AppCompatActivity }
     throw IllegalStateException("not attached")
 }
 
-inline fun Fragment.hideInputMethod() {
+fun Fragment.hideInputMethod() {
     activity?.hideInputMethod()
 }
 
-inline fun Fragment.showInputMethod(view: View) {
+fun Fragment.showInputMethod(view: View) {
     activity?.showInputMethod(view)
 }
-
-inline fun Fragment.inflate(@LayoutRes resourceId: Int, root: ViewGroup?, attachToRoot: Boolean = false): View =
-        LayoutInflater.from(activity).inflate(resourceId, root, attachToRoot)

@@ -78,11 +78,11 @@ inline fun <T> List<T>.forEachReversedWithIndex(action: (Int, T) -> Unit) {
     }
 }
 
-inline fun MutableList<*>.swap(from: Int, to: Int) {
+fun MutableList<*>.swap(from: Int, to: Int) {
     Collections.swap(this, from, to)
 }
 
-inline fun <T> List<T>.swapped(from: Int, to: Int): List<T> {
+fun <T> List<T>.swapped(from: Int, to: Int): List<T> {
     val copy = toMutableList()
     copy.swap(from, to)
     return copy

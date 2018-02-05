@@ -17,13 +17,12 @@
 package com.ivianuu.kommonextensions
 
 import android.graphics.Color
-import android.support.annotation.ColorInt
 
-inline fun String.toColorInt(): Int = Color.parseColor(this)
+fun String.toColorInt(): Int = Color.parseColor(this)
 
-inline fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
+fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
-inline fun Int.shift(by: Float): Int {
+fun Int.shift(by: Float): Int {
     if (by == 1f) return this
     val alpha = Color.alpha(this)
     val hsv = FloatArray(3)
@@ -32,13 +31,13 @@ inline fun Int.shift(by: Float): Int {
     return (alpha shl 24) + (0x00ffffff and Color.HSVToColor(hsv))
 }
 
-inline fun Int.darken(): Int = shift(0.9f)
+fun Int.darken(): Int = shift(0.9f)
 
-inline fun Int.lighten(): Int = shift(1.1f)
+fun Int.lighten(): Int = shift(1.1f)
 
-inline fun Int.isDark() = !isLight()
+fun Int.isDark() = !isLight()
 
-inline fun Int.isLight(): Boolean {
+fun Int.isLight(): Boolean {
     val darkness =
             1 - (0.299 * Color.red(this)
                     + 0.587 * Color.green(this)
@@ -46,14 +45,14 @@ inline fun Int.isLight(): Boolean {
     return darkness < 0.4
 }
 
-inline fun Int.invert(): Int {
+fun Int.invert(): Int {
     val r = 255 - Color.red(this)
     val g = 255 - Color.green(this)
     val b = 255 - Color.blue(this)
     return Color.argb(Color.alpha(this), r, g, b)
 }
 
-inline fun Int.adjustAlpha(factor: Float): Int {
+fun Int.adjustAlpha(factor: Float): Int {
     val alpha = Math.round(Color.alpha(this) * factor)
     val red = Color.red(this)
     val green = Color.green(this)
@@ -61,13 +60,13 @@ inline fun Int.adjustAlpha(factor: Float): Int {
     return Color.argb(alpha, red, green, blue)
 }
 
-inline fun Int.withAlpha(alpha: Float): Int {
+fun Int.withAlpha(alpha: Float): Int {
     val a = Math.min(255, Math.max(0, (alpha * 255).toInt())) shl 24
     val rgb = 0x00ffffff and this
     return a + rgb
 }
 
-inline fun Int.blendWith(other: Int, ratio: Float): Int {
+fun Int.blendWith(other: Int, ratio: Float): Int {
     val inverseRatio = 1f - ratio
     val a = Color.alpha(this) * inverseRatio + Color.alpha(other) * ratio
     val r = Color.red(this) * inverseRatio + Color.red(other) * ratio
