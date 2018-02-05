@@ -30,6 +30,7 @@ import android.support.v4.content.res.ResourcesCompat
 import android.util.TypedValue
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.graphics.drawable.toBitmap
 
 fun Context.getResAnim(@AnimRes resId: Int) : Animation = AnimationUtils.loadAnimation(this, resId)
 
