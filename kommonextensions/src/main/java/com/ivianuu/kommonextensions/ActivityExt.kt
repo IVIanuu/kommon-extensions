@@ -30,11 +30,11 @@ val Activity.contentView: View
     get() = findViewById(android.R.id.content)
 
 fun Activity.hideInputMethod() {
-    systemService<InputMethodManager>().hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
+    inputMethodManager.hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
 }
 
 fun Activity.showInputMethod(view: View) {
-    systemService<InputMethodManager>().showSoftInput(view, 0)
+    inputMethodManager.showSoftInput(view, 0)
 }
 
 fun Activity.finishWithoutTransition() {

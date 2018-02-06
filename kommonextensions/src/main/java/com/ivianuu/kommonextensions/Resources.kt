@@ -96,6 +96,6 @@ fun Context.createTintedVectorDrawable(@DrawableRes drawableRes: Int,
     return drawable
 }
 
-object ValueHolder {
+private object ValueHolder {
     val VALUE = TypedValue()
 }

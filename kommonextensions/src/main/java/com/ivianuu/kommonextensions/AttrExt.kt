@@ -168,6 +168,6 @@ fun Context.resolveTextArrayAttr(@AttrRes attr: Int,
     array.recycle()
     return charSequence ?: defaultValue
 }
- 
+
 fun Context.getTypedArrayWithAttributes(vararg attr: Int): TypedArray =
         theme.obtainStyledAttributes(attr)

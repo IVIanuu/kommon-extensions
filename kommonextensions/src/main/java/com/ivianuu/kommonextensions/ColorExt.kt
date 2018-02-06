@@ -66,7 +66,7 @@ fun Int.withAlpha(alpha: Float): Int {
     return a + rgb
 }
 
-fun Int.blendWith(other: Int, ratio: Float): Int {
+fun Int.blendedWith(other: Int, ratio: Float): Int {
     val inverseRatio = 1f - ratio
     val a = Color.alpha(this) * inverseRatio + Color.alpha(other) * ratio
     val r = Color.red(this) * inverseRatio + Color.red(other) * ratio

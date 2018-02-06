@@ -26,7 +26,7 @@ import android.view.Surface
 import android.view.WindowManager
 import androidx.content.systemService
 
-@PublishedApi internal val systemMetrics: DisplayMetrics get() = Resources.getSystem().displayMetrics
+private val systemMetrics: DisplayMetrics get() = Resources.getSystem().displayMetrics
 
 val Int.dp: Float get() = (this * systemMetrics.density)
 
@@ -39,32 +39,33 @@ fun Context.isLandscape(): Boolean {
     return rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270
 }
 
-fun Context.getRotation(): Int = systemService<WindowManager>().defaultDisplay.rotation
+fun Context.getRotation(): Int = windowManager.defaultDisplay.rotation
 
-val metrics = DisplayMetrics()
+private val displayMetrics = DisplayMetrics()
 
 @Px
 fun Context.getScreenHeight(): Int {
-    systemService<WindowManager>().defaultDisplay.getMetrics(metrics)
-    return metrics.heightPixels
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics.heightPixels
 }
 
 @Px
 fun Context.getScreenWidth(): Int {
-    systemService<WindowManager>().defaultDisplay.getMetrics(metrics)
-    return metrics.widthPixels
+
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics.widthPixels
 }
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 fun Context.getRealScreenHeight(): Int {
-    systemService<WindowManager>().defaultDisplay.getRealMetrics(metrics)
-    return metrics.heightPixels
+    windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+    return displayMetrics.heightPixels
 }
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 @Px
 fun Context.getRealScreenWidth(): Int {
-    systemService<WindowManager>().defaultDisplay.getRealMetrics(metrics)
-    return metrics.widthPixels
+    windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+    return displayMetrics.widthPixels
 }
