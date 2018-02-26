@@ -47,9 +47,3 @@ fun View.setGone(gone: Boolean) {
 }
 
 fun View.setGone(predicate: () -> Boolean) = setGone(predicate())
-
-fun View.isVisible() = visibility == View.VISIBLE
-
-fun View.isInvisible() = visibility == View.INVISIBLE
-
-fun View.isGone() = visibility == View.GONE

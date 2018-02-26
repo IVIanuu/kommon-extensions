@@ -19,25 +19,14 @@ package com.ivianuu.kommonextensions
 import android.view.Menu
 import android.view.MenuItem
 
-fun Menu.find(id: Int): MenuItem = findItem(id)!!
-fun Menu.findNullable(id: Int): MenuItem? = findItem(id)
-
-fun Menu.first(): MenuItem  = this[0]
-fun Menu.firstOrNull(): MenuItem?  = if (isEmpty()) null else first()
-fun Menu.last(): MenuItem  = this[lastIndex()]
-fun Menu.lastOrNull(): MenuItem?  = if (isEmpty()) null else last()
-
 fun Menu.isEmpty(): Boolean = size() == 0
-fun Menu.isNotEmpty() = !isEmpty()
 
 fun Menu.lastIndex(): Int = size() - 1
 
 inline fun Menu.forEach(action: (MenuItem) -> Unit) = items().forEach(action)
 inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items().forEachIndexed(action)
 
-operator fun Menu.get(index: Int) = getItem(index)
-
-fun Menu.getOrNull(index: Int): MenuItem? = if (index in 0..lastIndex()) getItem(index) else null
+operator fun Menu.get(index: Int): MenuItem = getItem(index)
 
 operator fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
 
