@@ -22,13 +22,13 @@ import android.view.MenuItem
 operator fun Menu.get(index: Int): MenuItem =
     getItem(index) ?: throw IndexOutOfBoundsException("Index: $index, Size: $size")
 
-inline operator fun Menu.contains(item: MenuItem) = indexOfItem(item) != -1
+operator fun Menu.contains(item: MenuItem) = indexOfItem(item) != -1
 
 inline val Menu.size get() = size()
 
-inline fun Menu.isEmpty() = size == 0
+fun Menu.isEmpty() = size == 0
 
-inline fun Menu.isNotEmpty() = size != 0
+fun Menu.isNotEmpty() = size != 0
 
 fun Menu.indexOfItem(item: MenuItem): Int {
     return (0 until size)
