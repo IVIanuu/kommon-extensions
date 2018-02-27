@@ -63,9 +63,9 @@ var Activity.isStatusBarLightCompat: Boolean
 
 var Activity.isDrawUnderStatusBar: Boolean
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    get() = isSystemUiVisibilityFlagEnabled(View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+    get() = isSystemUiVisibilityFlagEnabled(View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    set(value) { setSystemUiVisibilityFlag(View.SYSTEM_UI_FLAG_LAYOUT_STABLE, value) }
+    set(value) { setSystemUiVisibilityFlag(View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN, value) }
 
 var Activity.isDrawUnderStatusBarCompat: Boolean
     get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -104,11 +104,9 @@ var Activity.isStatusBarTransparent: Boolean
             && statusBarColor == Color.TRANSPARENT
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     set(value) {
-        isDrawUnderStatusBar = value
         setWindowAttribute(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, value)
-        if (value) {
-            statusBarColor = Color.TRANSPARENT
-        }
+        isDrawUnderStatusBar = value
+        if (value) statusBarColor = Color.TRANSPARENT
     }
 
 var Activity.isStatusBarTransparentCompat: Boolean
@@ -245,11 +243,10 @@ private fun Activity.isSystemUiVisibilityFlagEnabled(flag: Int): Boolean {
 }
 
 private fun Activity.setWindowAttribute(flag: Int, enabled: Boolean) {
-    val attrs = window.attributes.flags
     if (enabled) {
-        window.attributes.flags = attrs or flag
+        window.addFlags(flag)
     } else {
-        window.attributes.flags = attrs and flag.inv()
+        window.clearFlags(flag)
     }
 }
 
