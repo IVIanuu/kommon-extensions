@@ -17,7 +17,6 @@
 package com.ivianuu.kommonextensions
 
 import android.accounts.AccountManager
-import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.*
 import android.app.admin.DevicePolicyManager
@@ -63,7 +62,6 @@ import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
-
 
 val Context.accessibilityManager get() = getSystemService(
     Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
