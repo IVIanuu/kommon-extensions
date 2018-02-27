@@ -18,6 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.WindowManager
@@ -96,21 +97,29 @@ var Activity.isStatusBarTranslucentCompat: Boolean
         }
     }
 
-var Activity.isDrawsSystemBarBackgrounds: Boolean
+var Activity.isStatusBarTransparent: Boolean
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    get() = hasWindowAttribute(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    get() = isDrawUnderStatusBar &&
+            hasWindowAttribute(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            && statusBarColor == Color.TRANSPARENT
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    set(value) { setWindowAttribute(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, value) }
+    set(value) {
+        isDrawUnderStatusBar = value
+        setWindowAttribute(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, value)
+        if (value) {
+            statusBarColor = Color.TRANSPARENT
+        }
+    }
 
-var Activity.isDrawsSystemBarBackgroundsCompat: Boolean
+var Activity.isStatusBarTransparentCompat: Boolean
     get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        isDrawsSystemBarBackgrounds
+        isStatusBarTransparent
     } else {
         false
     }
     set(value) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            isDrawsSystemBarBackgrounds = value
+            isStatusBarTransparent = value
         }
     }
 
