@@ -18,8 +18,6 @@ package com.ivianuu.kommonextensions
 
 import android.graphics.Color
 
-fun String.toColorInt(): Int = Color.parseColor(this)
-
 fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
 fun Int.shift(by: Float): Int {
