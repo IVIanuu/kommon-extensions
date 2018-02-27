@@ -18,32 +18,20 @@ package com.ivianuu.kommonextensions
 
 import android.view.View
 
-fun View.setVisible() {
-    visibility = View.VISIBLE
-}
-
-fun View.setVisible(visible: Boolean) {
+fun View.setVisibleIf(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }
 
-fun View.setVisible(predicate: () -> Boolean) = setVisible(predicate())
+fun View.setVisibleIf(predicate: () -> Boolean) = setVisibleIf(predicate())
 
-fun View.setInvisible() {
-    visibility = View.INVISIBLE
-}
-
-fun View.setInvisible(invisible: Boolean) {
+fun View.setInvisibleIf(invisible: Boolean) {
     visibility = if (invisible) View.INVISIBLE else View.VISIBLE
 }
 
-fun View.setInvisible(predicate: () -> Boolean) = setInvisible(predicate())
+fun View.setInvisibleIf(predicate: () -> Boolean) = setInvisibleIf(predicate())
 
-fun View.setGone() {
-    visibility = View.GONE
-}
-
-fun View.setGone(gone: Boolean) {
+fun View.setGoneIf(gone: Boolean) {
     visibility = if (gone) View.GONE else View.VISIBLE
 }
 
-fun View.setGone(predicate: () -> Boolean) = setGone(predicate())
+fun View.setGoneIf(predicate: () -> Boolean) = setGoneIf(predicate())
