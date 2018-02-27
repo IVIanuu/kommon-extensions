@@ -23,10 +23,17 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 
+val Fragment.appCompatActivity: AppCompatActivity?
+    get() = activity as AppCompatActivity?
+
 fun Fragment.hideInputMethod() {
     requireActivity().hideInputMethod()
 }
 
 fun Fragment.showInputMethod(view: View) {
     requireActivity().showInputMethod(view)
+}
+
+fun Fragment.requireAppCompatActivity(): AppCompatActivity {
+    return requireActivity() as AppCompatActivity
 }
