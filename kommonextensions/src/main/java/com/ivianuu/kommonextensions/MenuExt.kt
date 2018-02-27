@@ -32,26 +32,26 @@ fun Menu.isNotEmpty() = size != 0
 
 fun Menu.indexOfItem(item: MenuItem): Int {
     return (0 until size)
-        .firstOrNull { get(it) == item } ?: -1
+        .firstOrNull { getItem(it) == item } ?: -1
 }
 
 inline fun Menu.forEach(action: (MenuItem) -> Unit) {
     for (i in 0 until size) {
-        action(get(i))
+        action(getItem(i))
     }
 }
 
 inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) {
     for (i in 0 until size) {
-        action(i, get(i))
+        action(i, getItem(i))
     }
 }
 
 operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
     private var index = 0
     override fun hasNext() = index < size
-    override fun next() = get(index++)
-    override fun remove() = removeItem(get(--index).itemId)
+    override fun next() = getItem(index++)
+    override fun remove() = removeItem(getItem(--index).itemId)
 }
 
 val Menu.items: Sequence<MenuItem>
