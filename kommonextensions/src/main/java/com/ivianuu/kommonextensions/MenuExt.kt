@@ -19,17 +19,18 @@ package com.ivianuu.kommonextensions
 import android.view.Menu
 import android.view.MenuItem
 
+val Menu.items: List<MenuItem>
+    get() = (0 until size()).map { get(it) }
+
 fun Menu.isEmpty(): Boolean = size() == 0
 
 fun Menu.lastIndex(): Int = size() - 1
 
-inline fun Menu.forEach(action: (MenuItem) -> Unit) = items().forEach(action)
-inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items().forEachIndexed(action)
+inline fun Menu.forEach(action: (MenuItem) -> Unit) = items.forEach(action)
+inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) = items.forEachIndexed(action)
 
 operator fun Menu.get(index: Int): MenuItem = getItem(index)
 
-operator fun Menu.get(item: MenuItem) = items().indexOfFirst { it == item }
+operator fun Menu.get(item: MenuItem) = items.indexOfFirst { it == item }
 
 operator fun Menu.contains(item: MenuItem) = get(item) != -1
-
-fun Menu.items(): List<MenuItem> = (0 until size()).map { get(it) }

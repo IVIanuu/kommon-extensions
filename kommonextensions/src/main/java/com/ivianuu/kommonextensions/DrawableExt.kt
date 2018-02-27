@@ -22,9 +22,11 @@ import android.support.annotation.ColorInt
 
 fun Drawable.tint(@ColorInt color: Int,
                   mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN,
-                  mutate: Boolean = true) {
-    setColorFilter(color, mode)
-    if (mutate) {
-        mutate()
+                  mutate: Boolean = true): Drawable {
+    return if (mutate) {
+        mutate().apply { setColorFilter(color, mode) }
+    } else {
+        setColorFilter(color, mode)
+        this
     }
 }

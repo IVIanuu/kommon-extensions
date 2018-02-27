@@ -28,9 +28,9 @@ private fun Context.make(message: CharSequence, duration: Int): Toast = makeText
 private fun Context.make(@StringRes message: Int, duration: Int): Toast = makeText(this, message, duration)
 
 fun Context.toast(message: CharSequence, length: Int = LENGTH_SHORT): Toast = make(message, length).apply { show() }
-fun Fragment.toast(message: CharSequence): Toast = getActivityOrThrow().toast(message)
+fun Fragment.toast(message: CharSequence): Toast = requireActivity().toast(message)
 fun Dialog.toast(message: CharSequence): Toast = context.toast(message)
 
 fun Context.toast(@StringRes message: Int): Toast = make(message, LENGTH_SHORT).apply { show() }
-fun Fragment.toast(@StringRes message: Int): Toast = getActivityOrThrow().toast(message)
+fun Fragment.toast(@StringRes message: Int): Toast = requireActivity().toast(message)
 fun Dialog.toast(@StringRes message: Int): Toast = context.toast(message)

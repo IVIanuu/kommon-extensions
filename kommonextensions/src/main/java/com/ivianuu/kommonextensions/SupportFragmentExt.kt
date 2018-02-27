@@ -23,28 +23,10 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 
-val Fragment.appCompatActivity
-    get() = activity as AppCompatActivity?
-
-fun Fragment.getContextOrThrow(): Context {
-    context?.let { return it }
-    throw IllegalStateException("not attached")
-}
-
-fun Fragment.getActivityOrThrow(): Activity {
-    activity?.let { return it }
-    throw IllegalStateException("not attached")
-}
-
-fun Fragment.getAppCompatActivityOrThrow(): AppCompatActivity {
-    activity?.let { return it as AppCompatActivity }
-    throw IllegalStateException("not attached")
-}
-
 fun Fragment.hideInputMethod() {
-    getActivityOrThrow().hideInputMethod()
+    requireActivity().hideInputMethod()
 }
 
 fun Fragment.showInputMethod(view: View) {
-    getActivityOrThrow().showInputMethod(view)
+    requireActivity().showInputMethod(view)
 }
