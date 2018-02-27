@@ -56,5 +56,5 @@ operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
 
 val Menu.items: Sequence<MenuItem>
     get() = object : Sequence<MenuItem> {
-        override fun iterator(): Iterator<MenuItem> = iterator()
+        override fun iterator(): Iterator<MenuItem> = this@items.iterator()
     }
