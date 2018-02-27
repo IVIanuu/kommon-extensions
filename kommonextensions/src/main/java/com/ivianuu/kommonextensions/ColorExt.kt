@@ -18,6 +18,18 @@ package com.ivianuu.kommonextensions
 
 import android.graphics.Color
 
+val Int.isDark: Boolean
+    get() = !isLight
+
+val Int.isLight: Boolean
+    get() {
+        val darkness =
+            1 - (0.299 * Color.red(this)
+                    + 0.587 * Color.green(this)
+                    + 0.114 * Color.blue(this)) / 255
+        return darkness < 0.4
+    }
+
 fun Int.stripAlpha(): Int = 0xff000000.toInt() or this
 
 fun Int.shift(by: Float): Int {
@@ -32,16 +44,6 @@ fun Int.shift(by: Float): Int {
 fun Int.darken(): Int = shift(0.9f)
 
 fun Int.lighten(): Int = shift(1.1f)
-
-fun Int.isDark() = !isLight()
-
-fun Int.isLight(): Boolean {
-    val darkness =
-            1 - (0.299 * Color.red(this)
-                    + 0.587 * Color.green(this)
-                    + 0.114 * Color.blue(this)) / 255
-    return darkness < 0.4
-}
 
 fun Int.invert(): Int {
     val r = 255 - Color.red(this)

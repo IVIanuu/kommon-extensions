@@ -54,8 +54,3 @@ fun Activity.finishWithResult(resultCode: Int, data: Intent? = null) {
     setResult(resultCode, data)
     finish()
 }
-
-inline fun AppCompatActivity.setSupportActionBar(toolbar: Toolbar, setup: ActionBar.() -> Unit) {
-    setSupportActionBar(toolbar)
-    supportActionBar?.let { setup(it) }
-}

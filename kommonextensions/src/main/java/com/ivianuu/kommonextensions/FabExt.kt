@@ -17,35 +17,24 @@
 package com.ivianuu.kommonextensions
 
 import android.support.design.widget.FloatingActionButton
+import android.view.View
 
-fun FloatingActionButton.show(show: Boolean) {
-    if (show) {
-        show()
-    } else{
-        hide()
+var FloatingActionButton.isShown: Boolean
+    get() = visibility == View.VISIBLE
+    set(value) {
+        if (value) {
+            show()
+        } else {
+            hide()
+        }
     }
-}
 
-inline fun FloatingActionButton.show(func: () -> Boolean) {
-    if (func()) {
-        show()
-    } else{
-        hide()
+var FloatingActionButton.isHidden: Boolean
+    get() = visibility == View.INVISIBLE || visibility == View.GONE
+    set(value) {
+        if (value) {
+            hide()
+        } else {
+            show()
+        }
     }
-}
-
-fun FloatingActionButton.hide(hide: Boolean) {
-    if (hide) {
-        hide()
-    } else {
-        show()
-    }
-}
-
-inline fun FloatingActionButton.hide(func: () -> Boolean) {
-    if (func()) {
-        hide()
-    } else {
-        show()
-    }
-}
