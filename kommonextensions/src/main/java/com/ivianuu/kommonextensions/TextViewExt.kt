@@ -20,24 +20,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 
-fun TextView.doBeforeTextChanged(action: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)?) {
+fun TextView.doBeforeTextChanged(action: (s: CharSequence, start: Int, count: Int, after: Int) -> Unit) =
     addTextChangedListener(beforeTextChanged = action)
-}
 
-fun TextView.doOnTextChanged(action: ((s: CharSequence, start: Int, before: Int, count: Int) -> Unit)?) {
+fun TextView.doOnTextChanged(action: (s: CharSequence, start: Int, before: Int, count: Int) -> Unit) =
     addTextChangedListener(onTextChanged = action)
-}
 
-fun TextView.doAfterTextChanged(action: ((s: Editable) -> Unit)?) {
+fun TextView.doAfterTextChanged(action: (s: Editable) -> Unit) =
     addTextChangedListener(afterTextChanged = action)
-}
 
 fun TextView.addTextChangedListener(
     beforeTextChanged: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)? = null,
     onTextChanged: ((s: CharSequence, start: Int, before: Int, count: Int) -> Unit)? = null,
     afterTextChanged: ((s: Editable) -> Unit)? = null
-) {
-    addTextChangedListener(object : TextWatcher {
+) : TextWatcher {
+    val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             beforeTextChanged?.invoke(s, start, count, after)
         }
@@ -49,5 +46,7 @@ fun TextView.addTextChangedListener(
         override fun afterTextChanged(s: Editable) {
             afterTextChanged?.invoke(s)
         }
-    })
+    }
+    addTextChangedListener(textWatcher)
+    return textWatcher
 }

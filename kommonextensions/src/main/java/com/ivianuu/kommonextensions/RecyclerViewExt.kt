@@ -17,20 +17,20 @@
 package com.ivianuu.kommonextensions
 
 import android.support.v7.widget.RecyclerView
+import android.view.MotionEvent
+import android.view.View
 
-fun RecyclerView.doOnScrollStateChanged(action: ((recyclerView: RecyclerView, newState: Int) -> Unit)?) {
+fun RecyclerView.doOnScrollStateChanged(action: ((recyclerView: RecyclerView, newState: Int) -> Unit)?) =
     addOnScrollListener(onScrollStateChanged = action)
-}
 
-fun RecyclerView.doOnScrolled(action: ((recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit)?) {
+fun RecyclerView.doOnScrolled(action: ((recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit)?) =
     addOnScrollListener(onScrolled = action)
-}
 
 fun RecyclerView.addOnScrollListener(
     onScrollStateChanged: ((recyclerView: RecyclerView, newState: Int) -> Unit)? = null,
     onScrolled: ((recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit)? = null
-) {
-    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+) : RecyclerView.OnScrollListener {
+    val listener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             onScrollStateChanged?.invoke(recyclerView, newState)
         }
@@ -38,5 +38,61 @@ fun RecyclerView.addOnScrollListener(
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             onScrolled?.invoke(recyclerView, dx, dy)
         }
-    })
+    }
+    addOnScrollListener(listener)
+    return listener
+}
+
+fun RecyclerView.doOnItemInterceptTouchEvent(action: (rv: RecyclerView, e: MotionEvent) -> Boolean) =
+    addOnItemTouchListener(onInterceptTouchEvent = action)
+
+fun RecyclerView.doOnItemTouchEvent(action: (rv: RecyclerView, e: MotionEvent) -> Unit) =
+    addOnItemTouchListener(onTouchEvent = action)
+
+fun RecyclerView.doOnItemRequestDisallowInterceptTouchEvent(action: (disallowIntercept: Boolean) -> Unit) =
+    addOnItemTouchListener(onRequestDisallowInterceptTouchEvent = action)
+
+fun RecyclerView.addOnItemTouchListener(
+    onInterceptTouchEvent: ((rv: RecyclerView, e: MotionEvent) -> Boolean)? = null,
+    onTouchEvent: ((rv: RecyclerView, e: MotionEvent) -> Unit)? = null,
+    onRequestDisallowInterceptTouchEvent: ((disallowIntercept: Boolean) -> Unit)? = null
+) : RecyclerView.OnItemTouchListener {
+    val listener = object : RecyclerView.OnItemTouchListener {
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+            return onInterceptTouchEvent?.invoke(rv, e) ?: false
+        }
+
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            onTouchEvent?.invoke(rv, e)
+        }
+
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+            onRequestDisallowInterceptTouchEvent?.invoke(disallowIntercept)
+        }
+    }
+    addOnItemTouchListener(listener)
+    return listener
+}
+
+fun RecyclerView.doOnChildViewAttachedToWindow(action: (view: View) -> Unit) =
+    addOnChildAttachStateChangeListener(onChildViewAttachedToWindow = action)
+
+fun RecyclerView.doOnChildViewDetachedFromWindow(action: (view: View) -> Unit) =
+    addOnChildAttachStateChangeListener(onChildViewDetachedFromWindow = action)
+
+fun RecyclerView.addOnChildAttachStateChangeListener(
+    onChildViewAttachedToWindow: ((view: View) -> Unit)? = null,
+    onChildViewDetachedFromWindow: ((view: View) -> Unit)? = null
+) : RecyclerView.OnChildAttachStateChangeListener {
+    val listener = object : RecyclerView.OnChildAttachStateChangeListener {
+        override fun onChildViewAttachedToWindow(view: View) {
+            onChildViewAttachedToWindow?.invoke(view)
+        }
+
+        override fun onChildViewDetachedFromWindow(view: View) {
+            onChildViewDetachedFromWindow?.invoke(view)
+        }
+    }
+    addOnChildAttachStateChangeListener(listener)
+    return listener
 }
