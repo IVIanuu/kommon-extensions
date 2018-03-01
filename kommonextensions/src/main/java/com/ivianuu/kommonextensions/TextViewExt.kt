@@ -20,16 +20,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 
-fun TextView.doBeforeTextChanged(beforeTextChanged: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)?) {
-    addTextChangedListener(beforeTextChanged = beforeTextChanged)
+fun TextView.doBeforeTextChanged(action: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)?) {
+    addTextChangedListener(beforeTextChanged = action)
 }
 
-fun TextView.doOnTextChanged(onTextChanged: ((s: CharSequence, start: Int, before: Int, count: Int) -> Unit)?) {
-    addTextChangedListener(onTextChanged = onTextChanged)
+fun TextView.doOnTextChanged(action: ((s: CharSequence, start: Int, before: Int, count: Int) -> Unit)?) {
+    addTextChangedListener(onTextChanged = action)
 }
 
-fun TextView.doAfterTextChanged(afterTextChanged: ((s: Editable) -> Unit)?) {
-    addTextChangedListener(afterTextChanged = afterTextChanged)
+fun TextView.doAfterTextChanged(action: ((s: Editable) -> Unit)?) {
+    addTextChangedListener(afterTextChanged = action)
 }
 
 fun TextView.addTextChangedListener(

@@ -18,12 +18,12 @@ package com.ivianuu.kommonextensions
 
 import android.support.v7.widget.RecyclerView
 
-fun RecyclerView.doOnScrollStateChanged(onScrollStateChanged: ((recyclerView: RecyclerView, newState: Int) -> Unit)?) {
-    addOnScrollListener(onScrollStateChanged = onScrollStateChanged)
+fun RecyclerView.doOnScrollStateChanged(action: ((recyclerView: RecyclerView, newState: Int) -> Unit)?) {
+    addOnScrollListener(onScrollStateChanged = action)
 }
 
-fun RecyclerView.doOnScrolled(onScrolled: ((recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit)?) {
-    addOnScrollListener(onScrolled = onScrolled)
+fun RecyclerView.doOnScrolled(action: ((recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit)?) {
+    addOnScrollListener(onScrolled = action)
 }
 
 fun RecyclerView.addOnScrollListener(
