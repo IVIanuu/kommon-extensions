@@ -20,11 +20,8 @@ import android.annotation.TargetApi
 import android.content.Context
 import android.content.res.Resources
 import android.os.Build
-import android.support.annotation.Px
 import android.util.DisplayMetrics
 import android.view.Surface
-import android.view.WindowManager
-import androidx.content.systemService
 
 private val systemMetrics: DisplayMetrics get() = Resources.getSystem().displayMetrics
 private val displayMetrics = DisplayMetrics()

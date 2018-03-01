@@ -96,3 +96,50 @@ fun RecyclerView.addOnChildAttachStateChangeListener(
     addOnChildAttachStateChangeListener(listener)
     return listener
 }
+
+fun RecyclerView.Adapter<*>.doOnChanged(action: () -> Unit) =
+        registerAdapterDataObserver(onChanged = action)
+
+fun RecyclerView.Adapter<*>.doOnItemRangeChanged(action: (positionStart: Int, itemCount: Int, payload: Any?) -> Unit) =
+        registerAdapterDataObserver(onItemRangeChanged = action)
+
+fun RecyclerView.Adapter<*>.doOnItemRangeInserted(action: (positionStart: Int, itemCount: Int) -> Unit) =
+    registerAdapterDataObserver(onItemRangeInserted = action)
+
+fun RecyclerView.Adapter<*>.doOnItemRangeRemoved(action: (positionStart: Int, itemCount: Int) -> Unit) =
+    registerAdapterDataObserver(onItemRangeRemoved = action)
+
+fun RecyclerView.Adapter<*>.doOnItemRangeMoved(action: (fromPosition: Int, toPosition: Int, itemCount: Int) -> Unit) =
+    registerAdapterDataObserver(onItemRangeMoved = action)
+
+fun RecyclerView.Adapter<*>.registerAdapterDataObserver(
+    onChanged: (() -> Unit?)? = null,
+    onItemRangeChanged: ((positionStart: Int, itemCount: Int, payload: Any?) -> Unit)? = null,
+    onItemRangeInserted: ((positionStart: Int, itemCount: Int) -> Unit)? = null,
+    onItemRangeRemoved: ((positionStart: Int, itemCount: Int) -> Unit)? = null,
+    onItemRangeMoved: ((fromPosition: Int, toPosition: Int, itemCount: Int) -> Unit)? = null
+) : RecyclerView.AdapterDataObserver {
+    val observer = object : RecyclerView.AdapterDataObserver() {
+        override fun onChanged() {
+            onChanged?.invoke()
+        }
+
+        override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) {
+            onItemRangeChanged?.invoke(positionStart, itemCount, payload)
+        }
+
+        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+            onItemRangeInserted?.invoke(positionStart, itemCount)
+        }
+
+        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+            onItemRangeRemoved?.invoke(positionStart, itemCount)
+        }
+
+        override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) {
+            onItemRangeMoved?.invoke(fromPosition, toPosition, itemCount)
+        }
+    }
+    registerAdapterDataObserver(observer)
+    return observer
+}

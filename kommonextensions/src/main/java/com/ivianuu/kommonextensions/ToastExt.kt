@@ -17,12 +17,12 @@
 package com.ivianuu.kommonextensions
 
 import android.app.Dialog
-
 import android.content.Context
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.widget.Toast
-import android.widget.Toast.*
+import android.widget.Toast.LENGTH_SHORT
+import android.widget.Toast.makeText
 
 private fun Context.make(message: CharSequence, duration: Int): Toast = makeText(this, message, duration)
 private fun Context.make(@StringRes message: Int, duration: Int): Toast = makeText(this, message, duration)
