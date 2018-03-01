@@ -12,6 +12,8 @@ buildscript {
 
         mavenPlugin = 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 
+        archLifecycleCommonJava8 = "android.arch.lifecycle:common-java8:1.1.0"
+
         supportVersion = '27.1.0'
         supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
         supportDesign = "com.android.support:design:$supportVersion"
