@@ -18,41 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.view.Menu
 import android.view.MenuItem
-
-operator fun Menu.get(index: Int): MenuItem =
-    getItem(index) ?: throw IndexOutOfBoundsException("Index: $index, Size: $size")
-
-operator fun Menu.contains(item: MenuItem) = indexOfItem(item) != -1
-
-inline val Menu.size get() = size()
-
-fun Menu.isEmpty() = size == 0
-
-fun Menu.isNotEmpty() = size != 0
-
-fun Menu.indexOfItem(item: MenuItem): Int {
-    return (0 until size)
-        .firstOrNull { getItem(it) == item } ?: -1
-}
-
-inline fun Menu.forEach(action: (MenuItem) -> Unit) {
-    for (i in 0 until size) {
-        action(getItem(i))
-    }
-}
-
-inline fun Menu.forEachIndexed(action: (Int, MenuItem) -> Unit) {
-    for (i in 0 until size) {
-        action(i, getItem(i))
-    }
-}
-
-operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
-    private var index = 0
-    override fun hasNext() = index < size
-    override fun next() = getItem(index++)
-    override fun remove() = removeItem(getItem(--index).itemId)
-}
+import androidx.view.iterator
 
 val Menu.items: Sequence<MenuItem>
     get() = object : Sequence<MenuItem> {

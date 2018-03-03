@@ -19,7 +19,7 @@ buildscript {
         supportDesign = "com.android.support:design:$supportVersion"
         supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
 
-        ktAndroid = 'androidx.core:core-ktx:0.1'
+        ktAndroid = 'androidx.core:core-ktx:0.2'
     }
 
     repositories {
