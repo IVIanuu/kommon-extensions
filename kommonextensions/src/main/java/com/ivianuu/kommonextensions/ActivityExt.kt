@@ -20,16 +20,17 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.ActivityCompat
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 
 val Activity.contentView: View
     get() = findViewById(android.R.id.content)
 
 fun Activity.hideInputMethod() {
-    inputMethodManager.hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
+    systemService<InputMethodManager>().hideSoftInputFromWindow(window.peekDecorView().windowToken, 0)
 }
 
 fun Activity.showInputMethod(view: View) {
-    inputMethodManager.showSoftInput(view, 0)
+    systemService<InputMethodManager>().showSoftInput(view, 0)
 }
 
 fun Activity.finishWithoutTransition() {

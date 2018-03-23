@@ -22,6 +22,7 @@ import android.content.res.Resources
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.Surface
+import android.view.WindowManager
 
 private val systemMetrics: DisplayMetrics get() = Resources.getSystem().displayMetrics
 private val displayMetrics = DisplayMetrics()
@@ -40,30 +41,30 @@ val Context.isLandscape: Boolean
     }
 
 val Context.rotation: Int
-    get() = windowManager.defaultDisplay.rotation
+    get() = systemService<WindowManager>().defaultDisplay.rotation
 
 val Context.screenHeight: Int
     get() {
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        systemService<WindowManager>().defaultDisplay.getMetrics(displayMetrics)
         return displayMetrics.heightPixels
     }
 
 val Context.screenWidth: Int
     get() {
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        systemService<WindowManager>().defaultDisplay.getMetrics(displayMetrics)
         return displayMetrics.widthPixels
     }
 
 val Context.realScreenHeight: Int
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() {
-        windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+        systemService<WindowManager>().defaultDisplay.getRealMetrics(displayMetrics)
         return displayMetrics.heightPixels
     }
 
 val Context.realScreenWidth: Int
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() {
-        windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+        systemService<WindowManager>().defaultDisplay.getRealMetrics(displayMetrics)
         return displayMetrics.widthPixels
     }
