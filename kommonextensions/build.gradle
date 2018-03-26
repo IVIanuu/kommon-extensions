@@ -35,7 +35,6 @@ dependencies {
     api rootProject.ext.supportDesign
     api rootProject.ext.supportRecyclerView
     api rootProject.ext.ktAndroid
-    api rootProject.ext.archLifecycleCommonJava8
 
     // Kotlin
     api rootProject.ext.kotlinStdlib
