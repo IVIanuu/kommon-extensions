@@ -33,7 +33,10 @@ dependencies {
     // Android Support
     api rootProject.ext.supportAppCompat
     api rootProject.ext.supportDesign
+    api rootProject.ext.supportPreferences
     api rootProject.ext.supportRecyclerView
+
+    // Ktx
     api rootProject.ext.ktAndroid
 
     // Kotlin
