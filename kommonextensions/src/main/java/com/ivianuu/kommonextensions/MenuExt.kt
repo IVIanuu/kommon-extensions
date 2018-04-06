@@ -18,7 +18,7 @@ package com.ivianuu.kommonextensions
 
 import android.view.Menu
 import android.view.MenuItem
-import androidx.view.iterator
+import androidx.core.view.iterator
 
 val Menu.items: Sequence<MenuItem>
     get() = object : Sequence<MenuItem> {

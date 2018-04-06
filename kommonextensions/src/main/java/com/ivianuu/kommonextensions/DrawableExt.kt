@@ -18,9 +18,8 @@ package com.ivianuu.kommonextensions
 
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
 
-fun Drawable.tint(@ColorInt color: Int,
+fun Drawable.tint(color: Int,
                   mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN,
                   mutate: Boolean = true): Drawable {
     return if (mutate) {
