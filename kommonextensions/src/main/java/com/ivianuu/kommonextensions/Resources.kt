@@ -21,10 +21,9 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.support.graphics.drawable.VectorDrawableCompat
+import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
 import android.util.TypedValue
@@ -59,9 +58,6 @@ fun Context.getResFloat(resId: Int) : Float {
 
 fun Context.getResInt(resId: Int) : Int = resources.getInteger(resId)
 
-fun Context.getResVectorDrawable(resId: Int): Drawable =
-    VectorDrawableCompat.create(this.resources, resId, this.theme) as Drawable
-
 fun Context.getResBitmap(resId: Int) : Bitmap = BitmapFactory.decodeResource(resources, resId)
 
 fun Context.getResColor(resId: Int) : Int = ContextCompat.getColor(this, resId)
@@ -74,23 +70,37 @@ fun Context.getResDrawable(resId : Int) : Drawable =
 
 fun Context.getResFont(resId: Int) : Typeface = ResourcesCompat.getFont(this, resId)!!
 
-fun Context.createTintedDrawable(drawableRes: Int,
-                                 color: Int,
-                                 mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
-    val drawable = getResDrawable(drawableRes)
-    drawable.tint(color, mode)
+fun Fragment.getResAnim(resId: Int) = requireActivity().getResAnim(resId)
 
-    return drawable
-}
+fun Fragment.getResIntArray(resId: Int)  = requireActivity().getResIntArray(resId)
 
-fun Context.createTintedVectorDrawable(drawableRes: Int,
-                                       color: Int,
-                                       mode: PorterDuff.Mode = PorterDuff.Mode.SRC_IN): Drawable {
-    val drawable = getResVectorDrawable(drawableRes)
-    drawable.tint(color, mode)
+fun Fragment.getResStringArray(resId: Int) = requireActivity().getResStringArray(resId)
 
-    return drawable
-}
+fun Fragment.getResTextArray(resId: Int)= requireActivity().getResTextArray(resId)
+
+fun Fragment.getResTypedArray(resId: Int) = requireActivity().getResTypedArray(resId)
+
+fun Fragment.getResBool(resId: Int) = requireActivity().getResBool(resId)
+
+fun Fragment.getResDimen(resId : Int) = requireActivity().getResDimen(resId)
+
+fun Fragment.getResDimenPx(resId : Int) = requireActivity().getResDimenPx(resId)
+
+fun Fragment.getResDimenPxOffset(resId : Int) = requireActivity().getResDimenPxOffset(resId)
+
+fun Fragment.getResFloat(resId: Int) = requireActivity().getResFloat(resId)
+
+fun Fragment.getResInt(resId: Int) : Int = resources.getInteger(resId)
+
+fun Fragment.getResBitmap(resId: Int) = requireActivity().getResBitmap(resId)
+
+fun Fragment.getResColor(resId: Int) = requireActivity().getResColor(resId)
+
+fun Fragment.getResColorStateList(resId: Int)= requireActivity().getResColorStateList(resId)
+
+fun Fragment.getResDrawable(resId : Int)= requireActivity().getResDrawable(resId)
+
+fun Fragment.getResFont(resId: Int) = requireActivity().getResFont(resId)
 
 private object ValueHolder {
     val VALUE = TypedValue()
